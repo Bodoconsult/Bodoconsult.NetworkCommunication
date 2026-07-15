@@ -132,9 +132,9 @@ public class StreamPipeline : IStreamPipeline
     }
 
     /// <summary>
-    /// Buffer size to use
+    /// Buffer size to use. Default 
     /// </summary>
-    public int BufferSize { get; set; } = 1024;
+    public int BufferSize { get; set; } = 1014;
 
 }
 

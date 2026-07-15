@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Numerics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.Replies;
@@ -13,11 +12,17 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using FftSharp;
 using IpBackend.Bll.BusinessLogic.Fft;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
+using ScottPlot;
+using ScottPlot.PlotStyles;
+using System.Diagnostics;
+using System.Drawing.Printing;
+using System.Numerics;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -36,35 +41,60 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <param name="data">List with arrays of complex numbers</param>
     public void ForwardCollectDataDelegate(List<Complex[]> data)
     {
-        var result = new List<Complex> { };
+        if (data.Count == 0)
+        {
+            return;
+        }
+
+        var i = data.Sum(item => item.Length);
+
+        var result = new List<Complex>(i);
 
         foreach (var item in data)
         {
             result.AddRange(item);
         }
 
-        CheckListLengthForFft(result);
+        var allNumbers = MathHelper.CheckListLengthForFft(result);
 
-        var allNumbers = result.ToArray();
+        var fft = new FftManager(allNumbers);
+        fft.CalculatePsd();
+        fft.CalculateFrequencyScale();
 
-        //var request = new FftReportBusinessTransactionRequestData
-        //{
-        //    TransactionId = ServerSideBusinessTransactionIds.ReportFftData,
-        //    Bytes = result.ToArray()
-        //};
+        // plot the sample audio
+        Plot plt = new();
+        plt.Add.ScatterLine(fft.FrequencyScale, fft.Psd);
+        plt.Axes.AutoScale();
+        plt.YLabel("Power (dB)");
+        plt.XLabel("Frequency (Hz)");
 
-        //_businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.ReportFftData, request);
-    }
+        //// sample audio with tones at 2, 10, and 20 kHz plus white noise
+        //double[] signal = FftSharp.SampleData.SampleAudio1();
+        //int sampleRate = 48_000;
 
-    public static void CheckListLengthForFft(List<Complex> result)
-    {
-        var number = FftManager.LastPowerOf2SmallerThanNumber((uint)result.Count);
-        var count = result.Count;
+        //// calculate the power spectral density using FFT
+        //System.Numerics.Complex[] spectrum = FftSharp.FFT.Forward(signal);
+        //double[] psd = FftSharp.FFT.Power(spectrum);
+        //double[] freq = FftSharp.FFT.FrequencyScale(psd.Length, sampleRate);
 
-        for (var i = number ; i < count; i++)
+        //// plot the sample audio
+        //ScottPlot.Plot plt = new();
+        //plt.Add.ScatterLine(freq, psd);
+        //plt.YLabel("Power (dB)");
+        //plt.XLabel("Frequency (Hz)");
+
+        var bytes = plt.GetImageBytes(1024, 768, ImageFormat.Jpeg);
+
+        //File.WriteAllBytes("C:\\temp\\fft.png", bytes);
+
+
+        var request = new FftReportBusinessTransactionRequestData
         {
-            result.Remove(result[0]);
-        }
+            TransactionId = ServerSideBusinessTransactionIds.ReportFftData,
+            JpegImageData = bytes
+        };
+
+        _businessTransactionManager.RunBusinessTransaction(ServerSideBusinessTransactionIds.ReportFftData, request);
     }
 
     /// <summary>
@@ -103,7 +133,7 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
         {
             var msg = $"Received message {_messageCounter} ({message.RawMessageData.Length}B)";
             //Debug.Print(msg);
-            IpDevice.DataMessagingConfig.AppLogger.LogInformation(msg);
+            IpDevice.DataMessagingConfig.MonitorLogger.LogInformation(msg);
         }
 
         if (_messageCounter == long.MaxValue)
@@ -131,11 +161,12 @@ public class SfxpIpDeviceUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogic
     /// <returns>Array with a list chunks are rendered to 9 bytes each: first byte is the channel and the next 8 bytes are chunk data</returns>
     public static Complex[] GetArray(List<DataChunk> chunks)
     {
-        var result = new List<Complex>();
+        var result = new List<Complex>(chunks.Count * 8);
 
         foreach (var chunk in chunks)
         {
             var value = chunk.Data!.Value;
+
             var c = GetComplex(value.Span[0]);
             result.Add(c);
 

@@ -158,6 +158,8 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
         for (etxPos = 0; etxPos < buffer.Length; etxPos++)
         {
             // ETX found?
+            
+
             if (buffer.Slice(etxPos, 1).FirstSpan[0] != DeviceCommunicationBasics.Etx)
             {
                 continue;
@@ -174,6 +176,12 @@ public class BtcpDataMessageSplitter : IDataMessageSplitter
             {
                 continue;
             }
+
+            if (etxPos + 2 < buffer.Length && buffer.Slice(etxPos + 1, 1).FirstSpan[0] != DeviceCommunicationBasics.Stx)
+            {
+                continue;
+            }
+
             etxFound = true;
             break;
         }

@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using System.Numerics;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using IpBackend.Bll.BusinessLogic.Adapters;
 
@@ -83,111 +82,6 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Adapters
             {
                 Assert.That(result.Real, Is.EqualTo(10d));
                 Assert.That(result.Imaginary, Is.Zero);
-            }
-        }
-
-        [Test]
-        public void CheckListLengthForFft_ListLength1_RemovesNoItem()
-        {
-            // Arrange 
-            var b = new List<Complex> { new(real: 42, imaginary: 12) };
-
-            // Act  
-            SfxpIpDeviceUdpBusinessLogicAdapter.CheckListLengthForFft(b);
-
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(b.Count, Is.EqualTo(1));
-            }
-        }
-
-        [Test]
-        public void CheckListLengthForFft_ListLength2_RemovesNoItem()
-        {
-            // Arrange 
-            var b = new List<Complex>
-            {
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12)
-            };
-
-            // Act  
-            SfxpIpDeviceUdpBusinessLogicAdapter.CheckListLengthForFft(b);
-
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(b.Count, Is.EqualTo(2));
-            }
-        }
-
-        [Test]
-        public void CheckListLengthForFft_ListLength3_Removes1Item()
-        {
-            // Arrange 
-            var b = new List<Complex>
-            {
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12)
-            };
-
-            // Act  
-            SfxpIpDeviceUdpBusinessLogicAdapter.CheckListLengthForFft(b);
-
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(b.Count, Is.EqualTo(2));
-            }
-        }
-
-
-        [Test]
-        public void CheckListLengthForFft_ListLength4_RemovesNoItem()
-        {
-            // Arrange 
-            var b = new List<Complex>
-            {
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12)
-            };
-
-            // Act  
-            SfxpIpDeviceUdpBusinessLogicAdapter.CheckListLengthForFft(b);
-
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(b.Count, Is.EqualTo(4));
-            }
-        }
-
-        [Test]
-        public void CheckListLengthForFft_ListLength7_Removes3Items()
-        {
-            // Arrange 
-            var b = new List<Complex>
-            {
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12),
-                new(real: 42, imaginary: 12)
-            };
-
-            // Act  
-            SfxpIpDeviceUdpBusinessLogicAdapter.CheckListLengthForFft(b);
-
-            // Assert
-            using (Assert.EnterMultipleScope())
-            {
-                Assert.That(b.Count, Is.EqualTo(4));
             }
         }
 

@@ -1,0 +1,253 @@
+﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
+
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
+
+namespace Bodoconsult.NetworkCommunication.DataMessaging.DigitalTwins;
+
+/// <summary>
+/// Factory for a real world digital twin for SFXP messages
+/// </summary>
+public class RealWorldSfxpDigitalTwinMessageFactory : IDigitalTwinMessageFactory
+{
+    private long _messageId;
+    private int _lastChunkId;
+    private int _syncByteCounter = -1;
+    private int _lastSampleCounter = -1;
+
+    /// <summary>
+    /// The interval for sending sample counter instead of regular sync byte
+    /// </summary>
+    public double SendSampleCounterInterval { get; set; } = 5.0;
+
+    /// <summary>
+    /// The number of messages created
+    /// </summary>
+    public int NumberOfMessagesCreated { get; set; } = 10;
+
+    /// <summary>
+    /// Generate a set of messages as defined with <see cref="NumberOfMessagesCreated"/>
+    /// </summary>
+    /// <returns>List with messages to send</returns>
+    public List<Memory<byte>> GenerateMessages()
+    {
+        var result = new List<Memory<byte>>();
+
+        for (var i = 0; i < NumberOfMessagesCreated; i++)
+        {
+            //Debug.Print($"\r\n*********** File {i} ***********");
+            result.Add(CreateMessage());
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Generate the next message in endless mode
+    /// </summary>
+    /// <returns>Message to send</returns>
+    public Memory<byte> GenerateNextMessage()
+    {
+        return CreateMessage();
+    }
+
+    private Memory<byte> CreateMessage()
+    {
+        var data = new List<byte>();
+
+        // MessageId (as big endian)
+        var intBytes = GetMessageIdAsBytes();
+
+        //Debug.Print(_messageId.ToString());
+
+        data.AddRange(intBytes);
+
+        //
+        if (_messageId == 0)
+        {
+            //Debug.Print($"Normal sync chunk: {_syncByteCounter} // {_lastSampleCounter}");
+            var sd = SfxpProtocolHelper.RegularSyncByte;
+            data.AddRange([sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte]);
+        }
+
+        while (true)
+        {
+            if (data.Count == SfxpProtocolHelper.MaximumMessageLength - 1)
+            {
+                break;
+            }
+
+            if (CreateChunks(data))
+            {
+                break;
+            }
+
+            // Add sync byte
+            if (AddSyncChunk(data))
+            {
+                break;
+            }
+
+            //if (data.Count == SfxpProtocolHelper.MaximumMessageLength - 1)
+            //{
+            //    break;
+            //}
+        }
+
+        SetNextMessageId();
+
+        return data.ToArray().AsMemory();
+    }
+
+    private bool CreateChunks(List<byte> data)
+    {
+        //var counter = 1;
+
+        // Create chunks
+        for (var j = _lastChunkId; j < SfxpProtocolHelper.NumberOfChunksBeforeSyncByteIsSent; j++)
+        {
+            // Add chunk if possible
+            var chunk = GenerateChunk(j);
+
+            // Resulting message is too long: leave here but remember chunk ID
+            if (data.Count + chunk.Count >= SfxpProtocolHelper.MaximumMessageLength)
+            {
+                //Debug.Print($"{counter} chunks");
+                _lastChunkId = j + 1;
+                return true;
+            }
+
+            data.AddRange(chunk);
+            //counter++;
+        }
+
+        //Debug.Print($"{counter - 1} chunks");
+        _lastChunkId = 0;
+        return false;
+    }
+
+    /// <summary>
+    /// Add the sync chunks if necessary
+    /// </summary>
+    /// <param name="data">Message</param>
+    /// <returns>True if no sync chunk could be added because of the length of the message else false</returns>
+    private bool AddSyncChunk(List<byte> data)
+    {
+        SyncByteDefinition sd;
+        byte[] syncBytes;
+
+        _syncByteCounter++;
+
+        //var test = _lastSampleCounter % SendSampleCounterInterval;
+        if (_syncByteCounter >= SendSampleCounterInterval && (_syncByteCounter) % SendSampleCounterInterval < 0.0001)
+        {
+            // Send sample counter chunk
+            //Debug.Print($"Sample sync chunk: {_syncByteCounter} // {_lastSampleCounter}  // {(_syncByteCounter) % SendSampleCounterInterval}");
+            sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
+            syncBytes = [0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte, 0x1, sd.SyncByte];
+            _lastSampleCounter = _syncByteCounter;
+        }
+        else
+        {
+            // repeat the sample counter
+            if (_syncByteCounter > SendSampleCounterInterval && _lastSampleCounter + 1 == _syncByteCounter)
+            {
+                //Debug.Print($"Repeat sample sync chunk:  {_syncByteCounter} // {_lastSampleCounter}");
+                sd = SfxpProtocolHelper.SampleCounterSyncByteBlock;
+                syncBytes = [0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte, 0x2, sd.SyncByte];
+                _lastSampleCounter = _syncByteCounter - 1;
+            }
+            else
+            {
+                // Normal sync chunk
+                //Debug.Print($"Normal sync chunk: {_syncByteCounter} // {_lastSampleCounter}");
+                sd = SfxpProtocolHelper.RegularSyncByte;
+                syncBytes = [sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte, sd.SyncByte];
+            }
+        }
+
+        if (data.Count > SfxpProtocolHelper.MaximumMessageLength - sd.Length)
+        {
+            _syncByteCounter--;
+            return true;
+        }
+
+        data.AddRange(syncBytes);
+        return false;
+    }
+
+    /// <summary>
+    /// Set the next message ID. If long.MaxValue is reached restart with 0
+    /// </summary>
+    private void SetNextMessageId()
+    {
+        if (_messageId == long.MaxValue)
+        {
+            _messageId = 0;
+        }
+        else
+        {
+            _messageId++;
+        }
+    }
+
+    /// <summary>
+    /// MessageId (as big endian)
+    /// </summary>
+    /// <returns></returns>
+    private byte[] GetMessageIdAsBytes()
+    {
+        var intBytes = BitConverter.GetBytes(_messageId);
+        return intBytes;
+    }
+
+    /// <summary>
+    /// Generate a data chunk
+    /// </summary>
+    /// <param name="index">Index of the data chunk</param>
+    /// <returns></returns>
+    private List<byte> GenerateChunk(int index)
+    {
+        var result = new List<byte>();
+
+        //Debug.Print($"Chunk {index}");
+
+        var x = index % 10;
+
+        switch (x)
+        {
+            case 9:
+                result.AddRange([0x1f, 0xf0, 0x1, 0xfe, 0xff, 0x1, 0x10, 0x0]);
+                break;
+            case 8:
+                result.AddRange([0x0, 0x20, 0xf, 0x10, 0xf, 0x1, 0xf, 0xf]);
+                break;
+            case 7:
+                result.AddRange([0x10, 0xf0, 0x10, 0x1e, 0x21, 0x20, 0x10, 0xf]);
+                break;
+            case 6:
+                result.AddRange([0xf0, 0x1, 0xf0, 0xf1, 0xf1, 0x11, 0xf, 0xf2]);
+                break;
+            case 5:
+                result.AddRange([0x10, 0xe0, 0x1, 0xf1, 0x1, 0xf0, 0xf0, 0x1]);
+                break;
+            case 4:
+                result.AddRange([0xf1, 0x10, 0xf0, 0x12, 0xe, 0x0, 0xe, 0xe1]);
+                break;
+            case 3:
+                result.AddRange([0x21, 0xff, 0xff, 0xff, 0x10, 0x1f, 0xe1, 0xf0]);
+                break;
+            case 2:
+                result.AddRange([0x1e, 0x10, 0x1f, 0x10, 0x1f, 0xf, 0x1f, 0x2]);
+                break;
+            case 1:
+                result.AddRange([0x20, 0x1f, 0x10, 0x10, 0x20, 0x1f, 0x0, 0x20]);
+                break;
+        default:
+                result.AddRange([0xf0, 0x1, 0x0, 0x1, 0x10, 0xf1, 0x1, 0xf1]);
+                break;
+        }
+
+        return result;
+    }
+}

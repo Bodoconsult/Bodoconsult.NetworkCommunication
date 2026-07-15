@@ -102,81 +102,33 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
             }
         }
 
-        [Test]
-        public void LastPowerOf2SmallerThanNumber_1_Returns0()
-        {
-            // Arrange 
-            const uint value = 1;
-
-            // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
-
-            // Assert
-            Assert.That(result, Is.EqualTo(1));
-        }
 
         [Test]
-        public void LastPowerOf2SmallerThanNumber_2_Returns1()
+        public void Test()
         {
             // Arrange 
-            const uint value = 2;
+            System.Numerics.Complex[] buffer =
+            [
+                new(real: 42, imaginary: 12),
+                new(real: 96, imaginary: 34),
+                new(real: 13, imaginary: 56),
+                new(real: 99, imaginary: 78)
+            ];
+
+            var result = new FftManager(buffer);
+
+            result.CalculatePsd();
 
             // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
+            result.SaveAsPng();
 
             // Assert
-            Assert.That(result, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void LastPowerOf2SmallerThanNumber_3_Returns1()
-        {
-            // Arrange 
-            const uint value = 3;
-
-            // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
-
-            // Assert
-            Assert.That(result, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void LastPowerOf2SmallerThanNumber_4_Returns1()
-        {
-            // Arrange 
-            const uint value = 4;
-
-            // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
-
-            // Assert
-            Assert.That(result, Is.EqualTo(4));
-        }
-
-        [Test]
-        public void LastPowerOf2SmallerThanNumber_7_Returns1()
-        {
-            // Arrange 
-            const uint value = 7;
-
-            // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
-
-            // Assert
-            Assert.That(result, Is.EqualTo(4));
-        }
-
-        public void LastPowerOf2SmallerThanNumber_18_Returns1()
-        {
-            // Arrange 
-            const uint value = 18;
-
-            // Act  
-            var result = FftManager.LastPowerOf2SmallerThanNumber(value);
-
-            // Assert
-            Assert.That(result, Is.EqualTo(16));
+            using (Assert.EnterMultipleScope())
+            {
+                Assert.That(result.Spectrum, Is.EqualTo(buffer));
+                Assert.That(result.Psd.Length, Is.Not.Zero);
+                Assert.That(result.FrequencyScale.Length, Is.Zero);
+            }
         }
     }
 }

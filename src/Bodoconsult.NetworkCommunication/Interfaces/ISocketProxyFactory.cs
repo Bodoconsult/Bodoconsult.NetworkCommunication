@@ -20,7 +20,8 @@ public interface ISocketProxyFactory
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
     /// <param name="monitorlogger"></param>
+    /// <param name="bufferSize"></param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
     ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port,
-        IAppLoggerProxy monitorlogger);
+        IAppLoggerProxy monitorlogger, int bufferSize);
 }

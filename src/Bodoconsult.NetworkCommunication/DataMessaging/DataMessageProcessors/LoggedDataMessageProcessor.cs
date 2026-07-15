@@ -28,8 +28,10 @@ public class LoggedDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
-        var s = $"received {message.ToShortInfoString()}";
+#if DEBUG
+        var s = $"{LoggerId}received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
+#endif
 
         // Handshake received
         if (message is IInboundHandShakeMessage handShake)

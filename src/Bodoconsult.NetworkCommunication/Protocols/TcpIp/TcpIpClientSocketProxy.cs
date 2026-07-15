@@ -26,7 +26,7 @@ public class TcpIpClientSocketProxy : BaseTcpIpSocketProxy
     public TcpIpClientSocketProxy(IAppLoggerProxy logger) : base(logger, new StreamPipeline())
     {
         _pipeline = (StreamPipeline)ReceiverPipeline;
-        _pipeline.BufferSize = MaxPacketSize;
+        _pipeline.BufferSize = BufferSize;
     }
 
     /// <summary>

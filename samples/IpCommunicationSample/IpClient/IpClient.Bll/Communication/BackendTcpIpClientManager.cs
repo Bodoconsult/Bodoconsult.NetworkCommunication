@@ -96,6 +96,8 @@ public class BackendTcpIpClientManager : IOrderManagementDeviceManager
         configurator.DataMessagingConfig.AnswerWithAcknowledgement = true;
         configurator.DataMessagingConfig.WaitForAcknowledgement = true;
 
+        configurator.DataMessagingConfig.BufferSize = 65536;
+
         // Add more config settings if needed
 
         // Data messaging package

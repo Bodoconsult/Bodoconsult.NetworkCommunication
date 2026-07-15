@@ -29,7 +29,7 @@ public class UdpClientWithHelloSocketProxy : BaseUpdSocketProxy
     public UdpClientWithHelloSocketProxy(IAppLoggerProxy logger) : base(logger, new DatagramPipeline())
     {
         _pipeline = (IDatagramPipeline)ReceiverPipeline;
-        _pipeline.BufferSize = MaxPacketSize;
+        _pipeline.BufferSize = BufferSize;
     }
 
     /// <summary>

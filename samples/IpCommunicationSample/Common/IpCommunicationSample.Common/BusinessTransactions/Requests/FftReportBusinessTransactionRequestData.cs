@@ -10,12 +10,7 @@ namespace IpCommunicationSample.Common.BusinessTransactions.Requests;
 public class FftReportBusinessTransactionRequestData : BaseBusinessTransactionRequestData
 {
     /// <summary>
-    /// Power spectrum density (PSD)
+    /// JPEG image data
     /// </summary>
-    public double[] Psd { get; set; } = [];
-
-    /// <summary>
-    /// Frequency scale
-    /// </summary>
-    public double[] FrequencyScale { get; set; } = [];
+    public byte[] JpegImageData { get; set; } = [];
 }

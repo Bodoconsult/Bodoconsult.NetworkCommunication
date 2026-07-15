@@ -22,14 +22,9 @@ public interface ISocketProxy: IDisposable
     string? LoggerId { get; set; }
 
     /// <summary>
-    /// Minimum buffer size
-    /// </summary>
-    int MinimumBufferSize { get; set; }
-
-    /// <summary>
     /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs
     /// </summary>
-    int MaxPacketSize { get; set; }
+    int BufferSize { get; set; }
 
     /// <summary>
     /// IP address of the remote device

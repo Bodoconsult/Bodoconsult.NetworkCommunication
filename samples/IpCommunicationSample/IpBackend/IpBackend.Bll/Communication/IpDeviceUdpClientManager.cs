@@ -100,6 +100,8 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         config.AnswerWithAcknowledgement = false;
         config.WaitForAcknowledgement = false;
 
+        config.BufferSize = 16384;
+
         // Create data loggers
         var appStartParams = (BackendAppStartParameter)_appGlobals.AppStartParameter;
         config.DataLoggingPath = appStartParams.DataLoggingPath;

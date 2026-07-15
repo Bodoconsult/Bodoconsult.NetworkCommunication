@@ -58,7 +58,10 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             return;
         }
 
-        var msg = $"{LoggerId}Buffer ({buffer.Length}B): {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}";
+        var msg = buffer.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize ? 
+            $"{LoggerId}Buffer ({buffer.Length}B): {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}" : 
+            $"{LoggerId}Buffer ({buffer.Length}B)";
+        
         MonitorLogger.LogInformation(msg);
 
 
@@ -80,7 +83,6 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             if (codecResult.ErrorCode != 0 || codecResult.DataMessage == null)
             {
                 msg = $"Parsing command failed with error code {codecResult.ErrorCode}: {codecResult.ErrorMessage}: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
-                //Trace.TraceInformation(msg);
                 MonitorLogger?.LogError(msg);
                 DataMessagingConfig.AppLogger.LogError($"{LoggerId}{msg}");
 
@@ -98,7 +100,15 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
             else
             {
 #if DEBUG
-                msg = $"{LoggerId}Parsed {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length}B: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                if (command.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+                {
+                    msg = $"{LoggerId}Parsed {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length}B: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref command)}";
+                }
+                else
+                {
+                    msg = $"{LoggerId}Parsed {codecResult.DataMessage.ToShortInfoString()}: buffer {buffer.Length}B";
+                }
+
                 DataMessagingConfig.MonitorLogger?.LogDebug(msg);
 #endif
 

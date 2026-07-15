@@ -33,8 +33,9 @@ public class SocketProxyFactory : ISocketProxyFactory
     /// <param name="ipAddress">IP address</param>
     /// <param name="port">Port</param>
     /// <param name="monitorlogger">Current monitor logger</param>
+    /// <param name="bufferSize">Receiver buffer size</param>
     /// <returns>Instance of <see cref="ISocketProxy"/></returns>
-    public ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port, IAppLoggerProxy monitorlogger)
+    public ISocketProxy CreateInstance(bool isServer, IpProtocolEnum protocol, IPAddress ipAddress, int port, IAppLoggerProxy monitorlogger, int bufferSize)
     {
         if (isServer)
         {
@@ -44,6 +45,7 @@ public class SocketProxyFactory : ISocketProxyFactory
                 {
                     IpAddress = ipAddress,
                     Port = port,
+                    BufferSize = bufferSize
                 };
             }
 
@@ -52,7 +54,8 @@ public class SocketProxyFactory : ISocketProxyFactory
             return new TcpIpServerSocketProxy(_tcpIpListenerManager, monitorlogger)
             {
                 IpAddress = ipAddress,
-                Port = port
+                Port = port,
+                BufferSize = bufferSize
             };
         }
 
@@ -62,14 +65,16 @@ public class SocketProxyFactory : ISocketProxyFactory
             return new UdpClientSocketProxy(monitorlogger)
                 {
                     IpAddress = ipAddress,
-                    Port = port
-                };
+                    Port = port,
+                    BufferSize = bufferSize
+            };
         }
 
         return new TcpIpClientSocketProxy(monitorlogger)
             {
                 IpAddress = ipAddress,
-                Port = port
-            };
+                Port = port,
+                BufferSize = bufferSize
+        };
     }
 }

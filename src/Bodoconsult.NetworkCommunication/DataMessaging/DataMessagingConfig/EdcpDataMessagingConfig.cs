@@ -186,4 +186,9 @@ public class EdcpDataMessagingConfig : IIpDataMessagingConfig
     /// Is the data logging activated. Default: false
     /// </summary>
     public bool IsDataLoggingActivated { get; set; }
+
+    /// <summary>
+    /// Receive buffer size in B
+    /// </summary>
+    public int BufferSize { get; set; } = 1024;
 }

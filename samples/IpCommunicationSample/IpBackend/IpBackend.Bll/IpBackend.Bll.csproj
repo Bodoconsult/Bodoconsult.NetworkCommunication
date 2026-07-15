@@ -12,6 +12,7 @@
 		<PackageReference Include="Bodoconsult.App" Version="1.0.9" />
 		<PackageReference Include="Bodoconsult.App.Abstractions" Version="1.0.9" />
 		<PackageReference Include="FftSharp" Version="2.2.0" />
+		<PackageReference Include="ScottPlot" Version="5.1.59" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.17" />
 	</ItemGroup>
 

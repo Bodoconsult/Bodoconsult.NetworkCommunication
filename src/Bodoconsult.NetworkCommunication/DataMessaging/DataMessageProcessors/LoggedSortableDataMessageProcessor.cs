@@ -32,8 +32,10 @@ public class LoggedSortableDataMessageProcessor : BaseDataMessageProcessor
     /// <param name="message">Message to process</param>
     public override void ProcessMessage(IInboundMessage message)
     {
+#if DEBUG
         var s = $"{LoggerId}received {message.ToShortInfoString()}";
         Config.MonitorLogger.LogInformation(s);
+#endif
 
         // Data message received
         if (message is ISortableInboundDataMessage dataMessage)

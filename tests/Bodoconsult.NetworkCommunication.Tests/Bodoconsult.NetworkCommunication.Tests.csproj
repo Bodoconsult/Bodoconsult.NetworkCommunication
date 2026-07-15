@@ -23,6 +23,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="log4net.config" />
+    <None Remove="Resources\btcp_1.bin" />
     <None Remove="Resources\sfx0.bin" />
     <None Remove="Resources\sfx0RealWorld.bin" />
     <None Remove="Resources\sfx1.bin" />
@@ -104,6 +105,10 @@
 
   <ItemGroup>
     <Folder Include="StateManagement\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\btcp_1.bin" />
   </ItemGroup>
 
 </Project>

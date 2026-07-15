@@ -158,6 +158,11 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     public bool IsDataLoggingActivated { get; set; }
 
     /// <summary>
+    /// Receive buffer size in B
+    /// </summary>
+    public int BufferSize { get; set; } = 1024;
+
+    /// <summary>
     /// Should an acknowledgement be sent if a request message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }

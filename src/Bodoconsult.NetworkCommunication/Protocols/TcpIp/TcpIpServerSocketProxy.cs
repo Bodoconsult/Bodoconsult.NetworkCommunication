@@ -26,7 +26,7 @@ public class TcpIpServerSocketProxy : BaseTcpIpSocketProxy
     {
         TcpIpListenerManager = tcpIpListenerManager;
         _pipeline = (StreamPipeline)ReceiverPipeline;
-        _pipeline.BufferSize = MaxPacketSize;
+        _pipeline.BufferSize = BufferSize;
     }
 
     /// <summary>

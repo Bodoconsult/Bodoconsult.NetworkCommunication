@@ -11,6 +11,8 @@ namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 /// </summary>
 public abstract class BaseTcpIpSocketProxy : ITcpSocketProxy
 {
+    private int _bufferSize = 512;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -28,19 +30,22 @@ public abstract class BaseTcpIpSocketProxy : ITcpSocketProxy
     public IPipeline ReceiverPipeline { get; set; }
 
     /// <summary>
-    /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for TCP defined by protocol specs. Default: 512
-    /// </summary>
-    public int MaxPacketSize { get; set; } = 512;
-
-    /// <summary>
     /// Logger ID or null
     /// </summary>
     public string? LoggerId { get; set; }
 
     /// <summary>
-    /// Minimum buffer size
+    /// Minimum buffer size. Default: 512
     /// </summary>
-    public int MinimumBufferSize { get; set; } = 512;
+    public int BufferSize
+    {
+        get => _bufferSize;
+        set
+        {
+            _bufferSize = value;
+            ReceiverPipeline.BufferSize = _bufferSize;
+        }
+    }
 
     /// <summary>
     /// IP address of the server

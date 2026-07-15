@@ -68,7 +68,6 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         }
     }
 
-
     [Test]
     public void MapToOutboundDataMessage_FftReportBusinessTransactionRequestData_CorrectMessage()
     {
@@ -82,8 +81,7 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
         {
             TransactionId = transactionId,
             TransactionGuid = transactionUid,
-            Psd = [0x0, 0x1, 0x1, 0x2, 0x2, 0x3, 0x3, 0x4, 0x4],
-            FrequencyScale = [0x0, 0x1, 0x1, 0x2, 0x2, 0x3, 0x3, 0x4, 0x4]
+            JpegImageData = [0x0, 0x1, 0x1, 0x2, 0x2, 0x3, 0x3, 0x4, 0x4]
         };
 
         // Act  
@@ -96,10 +94,9 @@ internal class ClientBtRequestDataToOutboundBtcpMessageConverterTests
             Assert.That(result.BusinessTransactionId, Is.EqualTo(transactionId));
             Assert.That(result.DataBlock, Is.Not.Null);
             Assert.That(result.DataBlock?.DataBlockType, Is.EqualTo('x'));
-            Assert.That(result.DataBlock?.Data.Length, Is.EqualTo(request.Psd.Length + request.FrequencyScale.Length + 1));
+            Assert.That(result.DataBlock?.Data.Length, Is.EqualTo(request.JpegImageData.Length));
         }
     }
-
 
     //[Test]
     //public void MapToBusinessTransactionRequestData_StateChangedEventFired_ReturnsRequestData()

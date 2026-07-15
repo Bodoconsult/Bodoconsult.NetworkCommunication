@@ -140,7 +140,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 
         Task.Delay(2000).Wait();
 
-        var digitalTwin = new SfxpDigitalTwinMessageFactory();
+        var digitalTwin = new RealWorldSfxpDigitalTwinMessageFactory();
 
         while (!_cts.IsCancellationRequested)
         {
@@ -186,7 +186,7 @@ public class SfxpBackendUdpBusinessLogicAdapter : BaseSimpleDeviceBusinessLogicA
 
         Task.Delay(2000).Wait();
 
-        var digitalTwin = new SfxpDigitalTwinMessageFactory();
+        var digitalTwin = new RealWorldSfxpDigitalTwinMessageFactory();
 
         ulong id = 0;
 

@@ -45,20 +45,8 @@ public class ClientBtRequestDataToOutboundBtcpMessageConverter : BaseBtRequestDa
 
     private static Memory<byte> GetBytes(FftReportBusinessTransactionRequestData fft)
     {
-        var list = new List<byte>();
-
-        foreach (var item in fft.Psd)
-        {
-            list.AddRange(BitConverter.GetBytes(item));
-        }
-
-        list.Add(DeviceCommunicationBasics.Eqn);
-
-        foreach (var item in fft.FrequencyScale)
-        {
-            list.AddRange(BitConverter.GetBytes(item));
-        }
-
+        var list = new List<byte>(fft.JpegImageData.Length + 1) { 0x66 };
+        list.AddRange(fft.JpegImageData);
         return list.ToArray();
     }
 

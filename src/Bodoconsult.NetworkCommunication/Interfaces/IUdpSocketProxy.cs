@@ -21,7 +21,7 @@ public interface IUdpSocketProxy: ISocketProxy
     void StartReceiverLoop(SocketReceivedDataDelegate socketReceivedDataDelegate);
 
     /// <summary>
-    /// Receive buffer size in byte
+    /// Socket receive buffer size in byte
     /// </summary>
     int ReceiveBufferSize { get; set; }
 }

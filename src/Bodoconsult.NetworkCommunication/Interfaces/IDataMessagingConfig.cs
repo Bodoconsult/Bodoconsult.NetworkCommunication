@@ -168,5 +168,10 @@ public interface IDataMessagingConfig
     /// </summary>
     bool IsDataLoggingActivated { get; set; }
 
+    /// <summary>
+    /// Receive buffer size in B
+    /// </summary>
+    int BufferSize { get; set; }
+
     #endregion
 }

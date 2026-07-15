@@ -44,9 +44,13 @@ public abstract class BaseDuplexIoSender : IDuplexIoSender
                 return sent;
             }
 
-            //#if DEBUG
-            //            DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent: {sent.ProcessExecutionResult}");
-            //#endif
+#if DEBUG
+            if (sent.BytesSent > 16384)
+            {
+                await File.WriteAllBytesAsync("C:\\Temp\\btcp_1.bin", message.RawMessageData.ToArray());
+                DataMessagingConfig.MonitorLogger.LogDebug($"{LoggerId}{message.ToShortInfoString()} sent: {sent.ProcessExecutionResult}");
+            }
+#endif
 
             //#if DEBUG
             //            msg = $"Message {message.ToShortInfoString()} sent: {sent.BytesSent}B";

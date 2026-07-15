@@ -12,6 +12,8 @@ namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 /// </summary>
 public abstract class BaseUpdSocketProxy : IUdpSocketProxy
 {
+    private int _bufferSize = 65536;
+
     /// <summary>
     /// Default ctor
     /// </summary>
@@ -40,14 +42,17 @@ public abstract class BaseUpdSocketProxy : IUdpSocketProxy
     public string? LoggerId { get; set; }
 
     /// <summary>
-    /// Minimum buffer size
+    /// Minimum buffer size. Default:65536
     /// </summary>
-    public int MinimumBufferSize { get; set; } = 512;
-
-    /// <summary>
-    /// Maximum buffer size for IP packages. Set this value lower if your packages do not reach the maximum length of 65536 byte for UDP diagrams defined by protocol specs. Default: 65536
-    /// </summary>
-    public int MaxPacketSize { get; set; } = 65536;
+    public int BufferSize
+    {
+        get => _bufferSize;
+        set
+        {
+            _bufferSize = value;
+            ReceiverPipeline.BufferSize = _bufferSize;
+        }
+    }
 
     /// <summary>
     /// IP address of the server
@@ -110,7 +115,7 @@ public abstract class BaseUpdSocketProxy : IUdpSocketProxy
     }
 
     /// <summary>
-    /// Receive buffer size in byte
+    /// Socket receive buffer size in byte
     /// </summary>
     public int ReceiveBufferSize { get; set; } = 200000;
 
