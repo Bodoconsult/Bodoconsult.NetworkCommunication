@@ -101,6 +101,7 @@ public class IpDeviceUdpClientManager : ISimpleDeviceManager
         config.WaitForAcknowledgement = false;
 
         config.BufferSize = 16384;
+        configurator.DataMessagingConfig.ExpectedMaximumLength = 16384;
 
         // Create data loggers
         var appStartParams = (BackendAppStartParameter)_appGlobals.AppStartParameter;

@@ -72,7 +72,12 @@ public class BtcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new BtcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new BtcpDataMessageCodec(DataBlockCodingProcessor)
+        {
+            ExpectedMinimumLength = DataMessagingConfig.ExpectedMinimumLength,
+            ExpectedMaximumLength = DataMessagingConfig.ExpectedMaximumLength
+        };
+
         DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

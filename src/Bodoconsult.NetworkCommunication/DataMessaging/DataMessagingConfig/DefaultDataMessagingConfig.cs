@@ -163,6 +163,16 @@ public class DefaultDataMessagingConfig: IIpDataMessagingConfig
     public int BufferSize { get; set; } = 1024;
 
     /// <summary>
+    /// Expected minimum length of the message or 0
+    /// </summary>
+    public int ExpectedMinimumLength { get; set; } = 1;
+
+    /// <summary>
+    /// Expected maximum length of the message or 0
+    /// </summary>
+    public int ExpectedMaximumLength { get; set; } = DeviceCommunicationBasics.DataMessageMaxPacketSize;
+
+    /// <summary>
     /// Should an acknowledgement be sent if a request message is received
     /// </summary>
     public bool AnswerWithAcknowledgement { get; set; }

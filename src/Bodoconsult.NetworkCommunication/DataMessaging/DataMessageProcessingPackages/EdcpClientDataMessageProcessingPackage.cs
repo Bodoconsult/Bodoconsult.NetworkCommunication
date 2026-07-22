@@ -76,7 +76,11 @@ public class EdcpClientDataMessageProcessingPackage : IDataMessageProcessingPack
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new EdcpDataMessageCodec(DataBlockCodingProcessor)
+        {
+            ExpectedMinimumLength = DataMessagingConfig.ExpectedMinimumLength,
+            ExpectedMaximumLength = DataMessagingConfig.ExpectedMaximumLength
+        };
         DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

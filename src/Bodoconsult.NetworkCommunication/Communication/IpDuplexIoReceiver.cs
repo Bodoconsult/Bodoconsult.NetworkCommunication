@@ -2,6 +2,7 @@
 
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Microsoft.Diagnostics.Utilities;
 using System.Buffers;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
@@ -61,7 +62,20 @@ public class IpDuplexIoReceiver : BaseDuplexIoReceiver
         var msg = buffer.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize ? 
             $"{LoggerId}Buffer ({buffer.Length}B): {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}" : 
             $"{LoggerId}Buffer ({buffer.Length}B)";
-        
+
+#if DEBUG
+        if (buffer.Length < DeviceCommunicationBasics.DataMessageMaxLoggedSize)
+        {
+            msg = $"{LoggerId}buffer {buffer.Length}B: {DataMessageHelper.GetStringFromArrayCsharpStyle(ref buffer)}";
+        }
+        else
+        {
+            msg = $"{LoggerId}buffer {buffer.Length}B";
+        }
+
+        DataMessagingConfig.MonitorLogger?.LogDebug(msg);
+#endif
+
         MonitorLogger.LogInformation(msg);
 
 

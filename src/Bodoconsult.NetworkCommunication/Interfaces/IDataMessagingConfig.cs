@@ -173,5 +173,15 @@ public interface IDataMessagingConfig
     /// </summary>
     int BufferSize { get; set; }
 
+    /// <summary>
+    /// Expected minimum length of the message or 0
+    /// </summary>
+    int ExpectedMinimumLength { get; set; }
+
+    /// <summary>
+    /// Expected maximum length of the message or 0
+    /// </summary>
+    int ExpectedMaximumLength { get; set; }
+
     #endregion
 }

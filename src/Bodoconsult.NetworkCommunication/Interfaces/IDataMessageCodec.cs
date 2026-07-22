@@ -12,12 +12,12 @@ public interface IDataMessageCodec
     /// <summary>
     /// Expected minimum length of the message or 0
     /// </summary>
-    int ExpectedMinimumLength { get;  }
+    int ExpectedMinimumLength { get; set; }
 
     /// <summary>
     /// Expected maximum length of the message or 0
     /// </summary>
-    int ExpectedMaximumLength { get;  }
+    int ExpectedMaximumLength { get; set; }
 
     /// <summary>
     /// Should an acknowledgement be sent if a request message is received
@@ -42,5 +42,4 @@ public interface IDataMessageCodec
     /// <param name="message">Data message to send</param>
     /// <returns>Codex result with a byte array as optimized <see cref="ReadOnlyMemory{T}"/> to send</returns>
     OutboundCodecResult EncodeDataMessage(IOutboundMessage message);
-
 }

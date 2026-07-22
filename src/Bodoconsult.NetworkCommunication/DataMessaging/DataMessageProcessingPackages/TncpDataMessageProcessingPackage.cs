@@ -70,7 +70,11 @@ public class TncpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new TncpDataMessageCodec(DataBlockCodingProcessor)
+        {
+            ExpectedMinimumLength = DataMessagingConfig.ExpectedMinimumLength,
+            ExpectedMaximumLength = DataMessagingConfig.ExpectedMaximumLength
+        };
         DataMessageCodingProcessor.MessageCodecs.Add(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

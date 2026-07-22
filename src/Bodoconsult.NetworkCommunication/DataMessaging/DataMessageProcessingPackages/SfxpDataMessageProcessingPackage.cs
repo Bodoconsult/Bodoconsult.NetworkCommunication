@@ -70,7 +70,11 @@ public class SfxpDataMessageProcessingPackage : IDataMessageProcessingPackage
         LoadCustomDataBlockCodecs();
 
         // SFXP codec
-        var deviceMessageCodec = new SfxpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new SfxpDataMessageCodec(DataBlockCodingProcessor)
+        {
+            ExpectedMinimumLength = DataMessagingConfig.ExpectedMinimumLength,
+            ExpectedMaximumLength = DataMessagingConfig.ExpectedMaximumLength
+        };
         DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         // Needed for client hello

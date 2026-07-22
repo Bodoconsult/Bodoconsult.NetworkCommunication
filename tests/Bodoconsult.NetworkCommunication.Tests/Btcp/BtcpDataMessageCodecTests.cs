@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
@@ -7,6 +8,7 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using System.Configuration;
 using System.Diagnostics;
 using System.Text;
 
@@ -272,6 +274,32 @@ internal class BtcpDataMessageCodecTests
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
         var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor);
+
+        // Act  
+        var result = codec.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result);
+            Assert.That(result.ErrorCode, Is.Zero);
+            Assert.That(result.DataMessage, Is.Not.Null);
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_ValidInputRealWorld4_MessageDecoded()
+    {
+        // Arrange 
+        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin"); 
+
+        var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+        var codec = new BtcpDataMessageCodec(dataBlockCodingProcessor)
+        {
+            ExpectedMaximumLength = 400000
+        };
 
         // Act  
         var result = codec.DecodeDataMessage(msg);

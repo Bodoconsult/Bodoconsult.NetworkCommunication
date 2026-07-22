@@ -30,40 +30,40 @@ public class BaseDuplexIoReceiver : IDuplexIoReceiver
     /// </summary>
     protected IAppLoggerProxy MonitorLogger;
 
-    /// <summary>
-    /// Check and wait until the socket is connected
-    /// </summary>
-    /// <returns>False if the socket is not connected else true</returns>
-    protected async Task<bool> WaitForSocketIsConnected()
-    {
-        var socketProxy = DataMessagingConfig.SocketProxy;
+    ///// <summary>
+    ///// Check and wait until the socket is connected
+    ///// </summary>
+    ///// <returns>False if the socket is not connected else true</returns>
+    //protected async Task<bool> WaitForSocketIsConnected()
+    //{
+    //    var socketProxy = DataMessagingConfig.SocketProxy;
 
-        // Check if the socket is available and connected
-        while (true)
-        {
-            if (CancellationSource?.Token.IsCancellationRequested ?? true)
-            {
-                //Trace.TraceInformation("FillMessagePipeline cancelled");
-                return false;
-            }
+    //    // Check if the socket is available and connected
+    //    while (true)
+    //    {
+    //        if (CancellationSource?.Token.IsCancellationRequested ?? true)
+    //        {
+    //            //Trace.TraceInformation("FillMessagePipeline cancelled");
+    //            return false;
+    //        }
 
-            if (socketProxy?.Connected ?? false)
-            {
-                return true;
-            }
+    //        if (socketProxy?.Connected ?? false)
+    //        {
+    //            return true;
+    //        }
 
-            socketProxy = DataMessagingConfig.SocketProxy;
+    //        socketProxy = DataMessagingConfig.SocketProxy;
 
-            if (CancellationSource != null)
-            {
-                await Task.Delay(50, CancellationSource.Token);
-            }
-            else
-            {
-                await Task.Delay(50);
-            }
-        }
-    }
+    //        if (CancellationSource != null)
+    //        {
+    //            await Task.Delay(50, CancellationSource.Token);
+    //        }
+    //        else
+    //        {
+    //            await Task.Delay(50);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Default ctor

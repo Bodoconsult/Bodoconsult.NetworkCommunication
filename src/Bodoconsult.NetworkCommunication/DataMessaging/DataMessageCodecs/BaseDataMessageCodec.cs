@@ -12,12 +12,12 @@ public abstract class BaseDataMessageCodec: IDataMessageCodec
     /// <summary>
     /// Expected minimum length of the message or 0
     /// </summary>
-    public int ExpectedMinimumLength { get; protected set; }
+    public int ExpectedMinimumLength { get; set; }
 
     /// <summary>
     /// Expected maximum length of the message or 0
     /// </summary>
-    public int ExpectedMaximumLength { get; protected set; }
+    public int ExpectedMaximumLength { get; set; }
 
     /// <summary>
     /// Should an acknowledgement be sent if a request message is received

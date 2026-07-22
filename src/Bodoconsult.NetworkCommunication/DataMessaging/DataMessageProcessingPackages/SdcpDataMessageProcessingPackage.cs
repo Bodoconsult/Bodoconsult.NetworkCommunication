@@ -73,7 +73,11 @@ public class SdcpDataMessageProcessingPackage : IDataMessageProcessingPackage
 
         LoadCustomDataBlockCodecs();
 
-        var deviceMessageCodec = new SdcpDataMessageCodec(DataBlockCodingProcessor);
+        var deviceMessageCodec = new SdcpDataMessageCodec(DataBlockCodingProcessor)
+        {
+            ExpectedMinimumLength = DataMessagingConfig.ExpectedMinimumLength,
+            ExpectedMaximumLength = DataMessagingConfig.ExpectedMaximumLength
+        }; 
         DataMessageCodingProcessor.AddMessageCodec(deviceMessageCodec);
 
         var rawCodec = new RawDataMessageCodec();

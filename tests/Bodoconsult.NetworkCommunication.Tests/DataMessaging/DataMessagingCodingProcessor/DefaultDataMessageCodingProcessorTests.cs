@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -72,6 +73,32 @@ internal class DefaultDataMessageCodingProcessorTests
             Assert.That(result.DataMessage, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpReplyInboundDataMessage)));
+        }
+    }
+
+    [Test]
+    public void DecodeDataMessage_BtcpDataMessageRealWorld1_DataMessageCreated()
+    {
+        // Arrange 
+        IDataBlockCodingProcessor dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
+        dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());
+
+        var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
+        processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
+        processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
+
+        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin");
+
+        // Act  
+        var result = processor.DecodeDataMessage(msg);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.DataMessage, Is.Not.Null);
+            ArgumentNullException.ThrowIfNull(result.DataMessage);
+            Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpRequestInboundDataMessage)));
         }
     }
 

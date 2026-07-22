@@ -27,7 +27,7 @@ public class BtcpDataMessageCodec : BaseDataMessageCodec
     {
         DataBlockCodingProcessor = dataBlockCodingProcessor;
 
-        ExpectedMinimumLength = 2;
+        ExpectedMinimumLength = 1;
         ExpectedMaximumLength = DeviceCommunicationBasics.DataMessageMaxPacketSize;
     }
 
