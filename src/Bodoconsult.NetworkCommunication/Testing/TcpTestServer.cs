@@ -77,9 +77,9 @@ public class TcpTestServer : BaseTcpIpDevice
     {
         try
         {
-            ArgumentNullException.ThrowIfNull(Socket, $"TcpClient: Socket is null");
+            ArgumentNullException.ThrowIfNull(Socket, "TcpClient: Socket is null");
 
-            Debug.Print($"TcppClient: Error: ReceiverLoop started");
+            Debug.Print("TcppClient: Error: ReceiverLoop started");
 
             waitForLoopStarted.Set();
 
@@ -98,7 +98,7 @@ public class TcpTestServer : BaseTcpIpDevice
                 }
                 catch (Exception e)
                 {
-                    Debug.Print($"TcppClient: Error: Receiving failed ", e);
+                    Debug.Print("TcppClient: Error: Receiving failed ", e);
                 }
 
                 if (result == 0)
@@ -115,7 +115,7 @@ public class TcpTestServer : BaseTcpIpDevice
         }
         catch (Exception e)
         {
-            Debug.Print($"TcppClient: Error: Receiver loop failed", e);
+            Debug.Print("TcppClient: Error: Receiver loop failed", e);
         }
     }
 

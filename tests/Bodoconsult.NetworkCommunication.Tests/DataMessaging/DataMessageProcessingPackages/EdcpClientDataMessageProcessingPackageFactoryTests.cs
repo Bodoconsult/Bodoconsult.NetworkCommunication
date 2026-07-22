@@ -13,7 +13,7 @@ internal class EdcpClientDataMessageProcessingPackageFactoryTests
     {
         // Arrange 
         var factory = new EdcpClientDataMessageProcessingPackageFactory();
-        var config = TestDataHelper.GetEdcpDataMessagingConfig(false);
+        var config = TestDataHelper.GetEdcpDataMessagingConfig();
 
         // Act  
         factory.CreateInstance(config);

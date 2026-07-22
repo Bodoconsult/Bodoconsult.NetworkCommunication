@@ -80,7 +80,7 @@ internal readonly struct DhcpFailoverRelationship : IDisposable
     /// </summary>
     public string SecondaryServerName => Marshal.PtrToStringUni(SecondaryServerNamePointer);
 
-    public DhcpIpArray Scopes => BitHelper.MarshalToStructure<DhcpIpArray>(ScopesPointer);
+    public DhcpIpArray Scopes => ScopesPointer.MarshalToStructure<DhcpIpArray>();
 
     /// <summary>
     /// This member is a null-terminated Unicode string containing the shared secret key associated with this failover relationship. There is no restriction on the length of this string.
@@ -93,7 +93,7 @@ internal readonly struct DhcpFailoverRelationship : IDisposable
         Api.FreePointer(PrimaryServerNamePointer);
         Api.FreePointer(SecondaryServerNamePointer);
         if (ScopesPointer != IntPtr.Zero)
-            BitHelper.MarshalToStructure<DhcpIpArray>(ScopesPointer).Dispose();
+            ScopesPointer.MarshalToStructure<DhcpIpArray>().Dispose();
         Api.FreePointer(SharedSecretPointer);
     }
 }

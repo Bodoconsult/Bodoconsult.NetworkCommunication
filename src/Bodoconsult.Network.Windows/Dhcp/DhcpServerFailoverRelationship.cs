@@ -92,8 +92,7 @@ public class DhcpServerFailoverRelationship : IDhcpServerFailoverRelationship
     {
         if (ServerType == DhcpServerFailoverServerType.PrimaryServer)
             return DhcpServer.Connect(SecondaryServerAddress.ToString());
-        else
-            return DhcpServer.Connect(PrimaryServerAddress.ToString());
+        return DhcpServer.Connect(PrimaryServerAddress.ToString());
     }
 
     public void ReplicateRelationship()
@@ -430,7 +429,7 @@ public class DhcpServerFailoverRelationship : IDhcpServerFailoverRelationship
             serverType: (DhcpServerFailoverServerType)native.ServerType,
             sharedSecret: native.SharedSecret,
             maximumClientLeadTime: TimeSpan.FromSeconds(native.Mclt),
-            stateSwitchInterval: native.SafePeriod >= 0 ? TimeSpan.FromSeconds(native.SafePeriod) : (TimeSpan?)null,
+            stateSwitchInterval: native.SafePeriod >= 0 ? TimeSpan.FromSeconds(native.SafePeriod) : null,
             scopeAddresses: native.Scopes.Elements.Select(e => e.AsNetworkToIpAddress()).ToList());
     }
 
@@ -449,7 +448,7 @@ public class DhcpServerFailoverRelationship : IDhcpServerFailoverRelationship
             serverType: (DhcpServerFailoverServerType)native.ServerType,
             sharedSecret: native.SharedSecret,
             maximumClientLeadTime: TimeSpan.FromSeconds(native.Mclt),
-            stateSwitchInterval: native.SafePeriod >= 0 ? TimeSpan.FromSeconds(native.SafePeriod) : (TimeSpan?)null,
+            stateSwitchInterval: native.SafePeriod >= 0 ? TimeSpan.FromSeconds(native.SafePeriod) : null,
             scopeAddresses: native.Scopes.Elements.Select(e => e.AsNetworkToIpAddress()).ToList());
     }
 

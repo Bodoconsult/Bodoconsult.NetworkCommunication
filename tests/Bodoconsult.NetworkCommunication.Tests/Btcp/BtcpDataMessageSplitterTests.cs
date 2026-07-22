@@ -1,10 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
 using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageSplitters;
-using System.Buffers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
@@ -365,7 +364,7 @@ internal class BtcpDataMessageSplitterTests
     {
         // Arrange 
         var splitter = new BtcpDataMessageSplitter();
-        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin");
+        var msg = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin");
 
         var buffer = new ReadOnlySequence<byte>(msg);
 

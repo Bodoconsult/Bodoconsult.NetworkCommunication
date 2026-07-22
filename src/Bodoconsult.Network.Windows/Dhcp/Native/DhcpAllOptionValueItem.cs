@@ -45,8 +45,7 @@ internal readonly struct DhcpAllOptionValueItem : IDisposable
         {
             if (OptionsArrayPointer == IntPtr.Zero)
                 return default;
-            else
-                return OptionsArrayPointer.MarshalToStructure<DhcpOptionValueArray>();
+            return OptionsArrayPointer.MarshalToStructure<DhcpOptionValueArray>();
         }
     }
 

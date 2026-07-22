@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Numerics;
 using Bodoconsult.App.Abstractions.Interfaces;
-using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.DataCollectionServices;
 using Bodoconsult.App.Helpers;
@@ -12,17 +12,12 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using FftSharp;
 using IpBackend.Bll.BusinessLogic.Fft;
 using IpBackend.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Replies;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using ScottPlot;
-using ScottPlot.PlotStyles;
-using System.Diagnostics;
-using System.Drawing.Printing;
-using System.Numerics;
 
 namespace IpBackend.Bll.BusinessLogic.Adapters;
 

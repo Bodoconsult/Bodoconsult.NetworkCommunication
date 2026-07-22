@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 

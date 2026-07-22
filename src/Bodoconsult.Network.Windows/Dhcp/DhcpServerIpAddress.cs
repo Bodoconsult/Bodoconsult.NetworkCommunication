@@ -2,6 +2,7 @@
 
 
 using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using Bodoconsult.Network.Windows.Dhcp.Native;
 
@@ -29,7 +30,7 @@ public struct DhcpServerIpAddress : IEquatable<DhcpServerIpAddress>, IEquatable<
 
     public DhcpServerIpAddress(IPAddress address)
     {
-        if (address.AddressFamily != global::System.Net.Sockets.AddressFamily.InterNetwork)
+        if (address.AddressFamily != AddressFamily.InterNetwork)
         {
             throw new ArgumentOutOfRangeException(nameof(address), "Only IPv4 addresses are supported");
         }
@@ -85,7 +86,7 @@ public struct DhcpServerIpAddress : IEquatable<DhcpServerIpAddress>, IEquatable<
 
         if (obj is DhcpServerIpAddress sia)
             return Equals(sia);
-        else if (obj is IPAddress ia)
+        if (obj is IPAddress ia)
             return Equals(ia);
 
         return false;
@@ -97,7 +98,7 @@ public struct DhcpServerIpAddress : IEquatable<DhcpServerIpAddress>, IEquatable<
 
     public bool Equals(IPAddress other)
     {
-        if (other == null || other.AddressFamily != global::System.Net.Sockets.AddressFamily.InterNetwork)
+        if (other == null || other.AddressFamily != AddressFamily.InterNetwork)
             return false;
 
 #pragma warning disable CS0618 // Type or member is obsolete

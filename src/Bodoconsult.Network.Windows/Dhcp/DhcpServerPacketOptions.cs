@@ -2,16 +2,17 @@
 
 
 using System.Runtime.InteropServices;
+using Bodoconsult.Network.Windows.Dhcp.Native;
 
 namespace Bodoconsult.Network.Windows.Dhcp;
 
 public class DhcpServerPacketOptions : MarshalByRefObject
 {
-    private readonly Native.DhcpServerOptions _options;
+    private readonly DhcpServerOptions _options;
 
     public DhcpServerPacketOptions(IntPtr pointer)
     {
-        _options = pointer.MarshalToStructure<Native.DhcpServerOptions>();
+        _options = pointer.MarshalToStructure<DhcpServerOptions>();
     }
 
     /// <summary>
@@ -22,7 +23,7 @@ public class DhcpServerPacketOptions : MarshalByRefObject
     /// <summary>
     /// Subnet mask.
     /// </summary>
-    public DhcpServerIpMask? SubnetMask => _options.SubnetMask == IntPtr.Zero ? (DhcpServerIpMask?)null : DhcpServerIpMask.FromNative(_options.SubnetMask);
+    public DhcpServerIpMask? SubnetMask => _options.SubnetMask == IntPtr.Zero ? null : DhcpServerIpMask.FromNative(_options.SubnetMask);
 
     /// <summary>
     /// Requested IP address.
@@ -32,7 +33,7 @@ public class DhcpServerPacketOptions : MarshalByRefObject
     /// <summary>
     /// Requested duration of the IP address lease.
     /// </summary>
-    public TimeSpan? RequestedLeaseTime => _options.RequestLeaseTime == IntPtr.Zero ? (TimeSpan?)null : new TimeSpan(Marshal.ReadInt32(_options.RequestLeaseTime) * 10_000_000L);
+    public TimeSpan? RequestedLeaseTime => _options.RequestLeaseTime == IntPtr.Zero ? null : new TimeSpan(Marshal.ReadInt32(_options.RequestLeaseTime) * 10_000_000L);
 
     // OverlayFields ?
 
@@ -87,10 +88,8 @@ public class DhcpServerPacketOptions : MarshalByRefObject
             {
                 return DhcpServerHardwareAddress.FromNative(ClientHardwareAddressType, 0, 0, 0);
             }
-            else
-            {
-                return DhcpServerHardwareAddress.FromNative(ClientHardwareAddressType, _options.ClientHardwareAddress, _options.ClientHardwareAddressLength);
-            }
+
+            return DhcpServerHardwareAddress.FromNative(ClientHardwareAddressType, _options.ClientHardwareAddress, _options.ClientHardwareAddressLength);
         }
     }
 
@@ -110,12 +109,10 @@ public class DhcpServerPacketOptions : MarshalByRefObject
             {
                 return BitHelper.EmptyByteArray;
             }
-            else
-            {
-                var buffer = new byte[_options.VendorClassLength];
-                Marshal.Copy(_options.VendorClass, buffer, 0, buffer.Length);
-                return buffer;
-            }
+
+            var buffer = new byte[_options.VendorClassLength];
+            Marshal.Copy(_options.VendorClass, buffer, 0, buffer.Length);
+            return buffer;
         }
     }
 
@@ -154,6 +151,6 @@ public class DhcpServerPacketOptions : MarshalByRefObject
     /// <summary>
     /// Scope identifier for the IP address.
     /// </summary>
-    public int? ScopeId => _options.ScopeId == IntPtr.Zero ? (int?)null : Marshal.ReadInt32(_options.ScopeId);
+    public int? ScopeId => _options.ScopeId == IntPtr.Zero ? null : Marshal.ReadInt32(_options.ScopeId);
 
 }

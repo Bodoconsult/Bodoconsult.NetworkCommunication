@@ -56,8 +56,7 @@ public class DhcpServerClass : IDhcpServerClass
         {
             if (IsVendorClass)
                 return DhcpServerOption.EnumVendorOptions(Server, Name);
-            else
-                return DhcpServerOption.EnumUserOptions(Server, Name);
+            return DhcpServerOption.EnumUserOptions(Server, Name);
         }
     }
 
@@ -70,8 +69,7 @@ public class DhcpServerClass : IDhcpServerClass
         {
             if (IsVendorClass)
                 return DhcpServerOptionValue.EnumGlobalVendorOptionValues(Server, Name);
-            else
-                return DhcpServerOptionValue.EnumGlobalUserOptionValues(Server, Name);
+            return DhcpServerOptionValue.EnumGlobalUserOptionValues(Server, Name);
         }
     }
 

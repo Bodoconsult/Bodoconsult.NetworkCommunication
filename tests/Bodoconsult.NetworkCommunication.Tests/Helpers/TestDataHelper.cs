@@ -23,7 +23,6 @@ using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.StateManagement.StateCheckManagers;
 
-
 namespace Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 public static class TestDataHelper

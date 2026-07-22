@@ -258,72 +258,54 @@ public class DhcpServerPacketWritable : DhcpServerPacket, IDhcpServerPacketWrita
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, long data)
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, int data)
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, short data)
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, byte data)
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, string data)
     {
         if (TryGetOptionIndex(optionId, out var index))
             return TryWriteOption(optionId, data, index, isUpdate: true);
-        else
-        {
-            if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
-                endIndex = GetLength();
-            return TryWriteOption(optionId, data, endIndex, isUpdate: false);
-        }
+        if (!TryGetOptionIndex(DhcpServerOptionIds.End, out var endIndex))
+            endIndex = GetLength();
+        return TryWriteOption(optionId, data, endIndex, isUpdate: false);
     }
 
     public bool TryAddOrUpdateOption(DhcpServerOptionIds optionId, DhcpServerIpAddress data)
@@ -445,40 +427,33 @@ public class DhcpServerPacketWritable : DhcpServerPacket, IDhcpServerPacketWrita
                     BufferModified = true;
                     return true;
                 }
-                else
+
+                var existingLength = buffer[++index];
+
+                if (dataLength == 0)
                 {
-                    var existingLength = buffer[++index];
-
-                    if (dataLength == 0)
-                    {
-                        if (existingLength == 0)
-                            return true; // no update
-                        else
-                            return TryAdjustBuffer(++index, -existingLength); // remove data
-                    }
-                    else if (dataLength > byte.MaxValue)
-                        return false;
-                    else
-                    {
-                        if (existingLength == dataLength)
-                        {
-                            dataIndex = ++index;
-                            BufferModified = true;
-                            return true;
-                        }
-                        else
-                        {
-                            // update option length
-                            buffer[index++] = (byte)dataLength;
-
-                            if (!TryAdjustBuffer(index, dataLength - existingLength))
-                                return false;
-
-                            dataIndex = index;
-                            return true;
-                        }
-                    }
+                    if (existingLength == 0)
+                        return true; // no update
+                    return TryAdjustBuffer(++index, -existingLength); // remove data
                 }
+
+                if (dataLength > byte.MaxValue)
+                    return false;
+                if (existingLength == dataLength)
+                {
+                    dataIndex = ++index;
+                    BufferModified = true;
+                    return true;
+                }
+
+                // update option length
+                buffer[index++] = (byte)dataLength;
+
+                if (!TryAdjustBuffer(index, dataLength - existingLength))
+                    return false;
+
+                dataIndex = index;
+                return true;
         }
     }
 

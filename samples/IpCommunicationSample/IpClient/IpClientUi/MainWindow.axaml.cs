@@ -24,7 +24,7 @@ public partial class MainWindow : ReactiveWindow<IpClientMainWindowViewModel>, I
 
     public MainWindow()
     {
-        this.Name = nameof(MainWindow);
+        Name = nameof(MainWindow);
 
         InitializeComponent();
 

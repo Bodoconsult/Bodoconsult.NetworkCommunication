@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Configurations;
 

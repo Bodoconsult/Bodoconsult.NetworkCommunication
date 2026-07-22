@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Extensions;
-using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpBackend.Bll.BusinessLogic.Adapters;
+using IpCommunicationSample.Common.BusinessTransactions.Requests;
 
 namespace IpCommunicationSampleTests.Backend.Adapter;
 
@@ -13,7 +13,7 @@ internal class TncpIpDeviceTcpIpBusinessLogicAdapterTests
     public void GetPaths_Channels1And3_ReturnsArray()
     {
         // Arrange 
-        var request = new StartMessagingBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Snapshot = true,
             Channel1 = true,
@@ -31,7 +31,7 @@ internal class TncpIpDeviceTcpIpBusinessLogicAdapterTests
     public void GetPaths_AllChannels_ReturnsArray()
     {
         // Arrange 
-        var request = new StartMessagingBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Snapshot = true,
             Channel1 = true,

@@ -48,8 +48,7 @@ public class DhcpServerBindingElement : IDhcpServerBindingElement
         {
             if (_interfaceId == null)
                 return InterfaceGuidId.ToByteArray();
-            else
-                return _interfaceId;
+            return _interfaceId;
         }
     }
 

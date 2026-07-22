@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using System.Diagnostics;
+using System.Text;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -8,7 +9,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
-using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tncp;
 

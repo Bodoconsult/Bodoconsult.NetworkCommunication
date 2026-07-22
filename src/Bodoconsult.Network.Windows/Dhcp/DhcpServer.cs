@@ -123,7 +123,7 @@ public class DhcpServer : IDhcpServer
         if (string.IsNullOrWhiteSpace(hostNameOrAddress))
             throw new ArgumentNullException(nameof(hostNameOrAddress));
 
-        var dnsEntry = global::System.Net.Dns.GetHostEntry(hostNameOrAddress);
+        var dnsEntry = System.Net.Dns.GetHostEntry(hostNameOrAddress);
 
         var dnsAddress = dnsEntry.AddressList.Where(a => a.AddressFamily == AddressFamily.InterNetwork).FirstOrDefault();
 

@@ -21,6 +21,11 @@ public interface IUiStateHandler
     ErrorBusinessTransactionRequestData? ErrorBusinessTransactionRequestData { get; }
 
     /// <summary>
+    /// Current FFT request data
+    /// </summary>
+    FftReportBusinessTransactionRequestData? FftReportBusinessTransactionRequestData { get; }
+
+    /// <summary>
     /// Device state message to show in the UI
     /// </summary>
     string DeviceStateMessage { get; set; }
@@ -51,6 +56,12 @@ public interface IUiStateHandler
     /// </summary>
     /// <param name="requestData">Current request data</param>
     void ReportDeviceErrorReceived(ErrorBusinessTransactionRequestData requestData);
+
+    /// <summary>
+    /// An FFT request was received from backend
+    /// </summary>
+    /// <param name="requestData">Current FFT request data</param>
+    void FftReportBusinessTransactionRequestDataReceived(FftReportBusinessTransactionRequestData requestData);
 }
 
 

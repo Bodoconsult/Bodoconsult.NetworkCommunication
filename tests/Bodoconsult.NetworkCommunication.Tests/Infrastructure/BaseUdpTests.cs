@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Security;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Interfaces;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Security;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Infrastructure;
 
@@ -322,7 +322,7 @@ public class BaseUdpTests : IUdpTests
     protected void RunBasicSendTests(List<IOutboundDataMessage> data, int expectedCount)
     {
         // Arrange and act
-        SendDataFromLocalToRemote(data, expectedCount, null);
+        SendDataFromLocalToRemote(data, expectedCount);
 
         // Assert
         if (expectedCount == 0)

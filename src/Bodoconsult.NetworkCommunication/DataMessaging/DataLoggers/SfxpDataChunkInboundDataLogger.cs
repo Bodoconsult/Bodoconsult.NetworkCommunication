@@ -77,7 +77,7 @@ public class SfxpDataChunkInboundDataLogger : IInboundDataLogger
 
         if (message is not SfxpInboundDataMessage { DataBlock: SfxpInboundDatablock db })
         {
-            Debug.Print($"No SFXP message");
+            Debug.Print("No SFXP message");
             return list;
         }
 

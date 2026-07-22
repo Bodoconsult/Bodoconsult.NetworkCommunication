@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using System.Text;
 using Bodoconsult.NetworkCommunication.ClientNotifications.Notifications;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.App;
 using IpBackend.Bll.ClientNotifications;
 

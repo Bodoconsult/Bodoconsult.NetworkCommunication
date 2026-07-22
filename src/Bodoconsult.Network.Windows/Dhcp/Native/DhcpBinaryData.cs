@@ -29,15 +29,13 @@ internal readonly struct DhcpBinaryData : IDisposable
             {
                 return null;
             }
-            else
-            {
-                var blob = new byte[DataLength];
 
-                if (DataLength != 0)
-                    Marshal.Copy(DataPointer, blob, 0, DataLength);
+            var blob = new byte[DataLength];
 
-                return blob;
-            }
+            if (DataLength != 0)
+                Marshal.Copy(DataPointer, blob, 0, DataLength);
+
+            return blob;
         }
     }
 
@@ -49,10 +47,8 @@ internal readonly struct DhcpBinaryData : IDisposable
             {
                 return default;
             }
-            else
-            {
-                return DhcpServerHardwareAddress.FromNative(DhcpServerHardwareType.Ethernet, DataPointer, DataLength);
-            }
+
+            return DhcpServerHardwareAddress.FromNative(DhcpServerHardwareType.Ethernet, DataPointer, DataLength);
         }
     }
 

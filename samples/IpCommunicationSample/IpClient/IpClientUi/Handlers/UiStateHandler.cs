@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpClient.Bll.Interfaces;
 using System.Text;
 using Bodoconsult.App.ReactiveUI.ViewModels;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
+using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
@@ -43,6 +43,11 @@ public partial class UiStateHandler : ReactiveObject, IUiStateHandler
     /// Current request data for the device reported an error to the backend
     /// </summary>
     public ErrorBusinessTransactionRequestData? ErrorBusinessTransactionRequestData { get; private set; }
+
+    /// <summary>
+    /// Current FFT request data
+    /// </summary>
+    public FftReportBusinessTransactionRequestData? FftReportBusinessTransactionRequestData { get; private set; }
 
     /// <summary>
     /// Device state message to show in the UI
@@ -108,5 +113,14 @@ public partial class UiStateHandler : ReactiveObject, IUiStateHandler
         _deviceErrorCounter++;
         DeviceErrorCounterString = _deviceErrorCounter.ToString("0,000");
         LastDeviceError = $"Command: {requestData.TelnetCommand}\r\nAdditional info:\r\n{requestData.TelnetAdditionalInfo}";
+    }
+
+    /// <summary>
+    /// An FFT request was received from backend
+    /// </summary>
+    /// <param name="requestData">Current FFT request data</param>
+    public void FftReportBusinessTransactionRequestDataReceived(FftReportBusinessTransactionRequestData requestData)
+    {
+        FftReportBusinessTransactionRequestData = requestData;
     }
 }

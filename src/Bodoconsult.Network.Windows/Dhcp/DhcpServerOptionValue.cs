@@ -368,13 +368,10 @@ public class DhcpServerOptionValue : IDhcpServerOptionValue
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return EnumOptionValuesV5(server, scopeInfo, className, vendorName);
-        else
-        {
-            if (vendorName != null || className != null)
-                throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
+        if (vendorName != null || className != null)
+            throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
 
-            return EnumOptionValuesV0(server, scopeInfo);
-        }
+        return EnumOptionValuesV0(server, scopeInfo);
     }
 
     private static IEnumerable<DhcpServerOptionValue> EnumOptionValuesV0(DhcpServer server, IntPtr scopeInfo)
@@ -458,13 +455,10 @@ public class DhcpServerOptionValue : IDhcpServerOptionValue
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return GetOptionValueV5(server, scopeInfo, optionId, className, vendorName);
-        else
-        {
-            if (vendorName != null || className != null)
-                throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
+        if (vendorName != null || className != null)
+            throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
 
-            return GetOptionValueV0(server, scopeInfo, optionId);
-        }
+        return GetOptionValueV0(server, scopeInfo, optionId);
     }
 
     private static DhcpServerOptionValue GetOptionValueV0(DhcpServer server, IntPtr scopeInfo, int optionId)

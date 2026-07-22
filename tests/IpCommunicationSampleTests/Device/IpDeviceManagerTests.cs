@@ -13,7 +13,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpDevice.Bll;
 
-
 namespace IpCommunicationSampleTests.Device;
 
 [TestFixture]

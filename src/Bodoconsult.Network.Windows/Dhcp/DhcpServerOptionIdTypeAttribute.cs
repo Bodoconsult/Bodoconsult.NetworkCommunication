@@ -3,7 +3,7 @@
 
 namespace Bodoconsult.Network.Windows.Dhcp;
 
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Field)]
 public class DhcpServerOptionIdTypeAttribute : Attribute
 {
     public DhcpServerOptionIdTypes Type;

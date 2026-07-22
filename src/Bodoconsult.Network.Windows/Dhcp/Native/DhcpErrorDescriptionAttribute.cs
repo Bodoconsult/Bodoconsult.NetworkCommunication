@@ -3,7 +3,7 @@
 
 namespace Bodoconsult.Network.Windows.Dhcp.Native;
 
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
+[AttributeUsage(AttributeTargets.Field)]
 internal class DhcpErrorDescriptionAttribute : Attribute
 {
     public string Description { get; }

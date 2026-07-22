@@ -304,7 +304,7 @@ public abstract class BaseUdpIpDuplexIoTests : BaseUdpTests
         RunBasicReceiveTests(messages, messages.Count);
 
         // Assert
-        Wait.Until(() => IsMessageReceivedFired, 5000);
+        Wait.Until(() => IsMessageReceivedFired);
         using (Assert.EnterMultipleScope())
         {
             Assert.That(IsMessageReceivedFired);

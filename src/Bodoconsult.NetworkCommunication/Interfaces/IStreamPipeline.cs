@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Delegates;
 using System.Buffers;
+using Bodoconsult.NetworkCommunication.Delegates;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 

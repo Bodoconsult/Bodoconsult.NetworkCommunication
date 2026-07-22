@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using System.Text.Json.Serialization;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
-using System.Text.Json.Serialization;
 
 namespace Bodoconsult.NetworkCommunication.Interfaces;
 

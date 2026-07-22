@@ -217,10 +217,9 @@ public class DhcpServerOption : IDhcpServerOption
     {
         if (VendorName != null)
             return DhcpServerClass.GetClass(Server, VendorName);
-        else if (ClassName != null)
+        if (ClassName != null)
             return DhcpServerClass.GetClass(Server, ClassName);
-        else
-            return null;
+        return null;
     }
 
     internal static DhcpServerOption GetDefaultOption(DhcpServer server, int optionId)
@@ -238,13 +237,11 @@ public class DhcpServerOption : IDhcpServerOption
         {
             return GetOptionV5(server, optionId, className, vendorName);
         }
-        else
-        {
-            if (vendorName != null || className != null)
-                throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
 
-            return GetOptionV0(server, optionId);
-        }
+        if (vendorName != null || className != null)
+            throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
+
+        return GetOptionV0(server, optionId);
     }
 
     private static DhcpServerOption GetOptionV0(DhcpServer server, int optionId)
@@ -322,8 +319,7 @@ public class DhcpServerOption : IDhcpServerOption
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return EnumOptionsV5(server, null, null);
-        else
-            return EnumOptionsV0(server);
+        return EnumOptionsV0(server);
     }
 
     internal static IEnumerable<DhcpServerOption> EnumUserOptions(DhcpServer server, string className)

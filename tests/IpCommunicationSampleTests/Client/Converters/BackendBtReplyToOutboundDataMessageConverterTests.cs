@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Text;
 using IpClient.Bll.BusinessLogic.Converters;
 
 namespace IpCommunicationSampleTests.Client.Converters;

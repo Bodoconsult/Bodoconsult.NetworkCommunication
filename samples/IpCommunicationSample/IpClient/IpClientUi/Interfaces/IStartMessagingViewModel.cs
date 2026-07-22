@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Reactive;
 using Bodoconsult.App.ReactiveUI.Regions;
 using ReactiveUI;
 
@@ -75,12 +76,12 @@ public interface IStartMessagingViewModel
     /// <summary>
     /// Start messaging command
     /// </summary>
-    ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> StartMessagingCommand { get; }
+    ReactiveCommand<Unit, Unit> StartMessagingCommand { get; }
 
     /// <summary>
     /// Back command
     /// </summary>
-    ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> BackCommand { get; }
+    ReactiveCommand<Unit, Unit> BackCommand { get; }
 
     /// <summary>
     /// Method based late injection of <see cref="IScreen"/> instance for navigation

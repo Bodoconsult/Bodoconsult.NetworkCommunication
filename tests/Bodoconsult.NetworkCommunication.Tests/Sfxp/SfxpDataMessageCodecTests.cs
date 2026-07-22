@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using Bodoconsult.App.Abstractions.Extensions;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
@@ -8,8 +10,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Diagnostics;
-using Bodoconsult.App.Abstractions.Extensions;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Sfxp;
 

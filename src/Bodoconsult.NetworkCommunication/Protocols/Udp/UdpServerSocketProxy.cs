@@ -6,11 +6,11 @@
 // https://learn.microsoft.com/de-de/dotnet/framework/network-programming/using-udp-services
 // https://enclave.io/high-performance-udp-sockets-net6/
 
+using System.Net;
+using System.Net.Sockets;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.Udp;
 

@@ -57,8 +57,7 @@ public class DhcpServerDnsSettings : IDhcpServerDnsSettings
 
             if (option.Values.FirstOrDefault() is DhcpServerOptionElementDWord value)
                 return new DhcpServerDnsSettings((uint)value.RawValue);
-            else
-                return new DhcpServerDnsSettings(FlagDefaultSettings);
+            return new DhcpServerDnsSettings(FlagDefaultSettings);
         }
         catch (DhcpServerException e) when (e.ApiErrorId == (uint)DhcpErrors.ErrorFileNotFound)
         {
@@ -78,8 +77,7 @@ public class DhcpServerDnsSettings : IDhcpServerDnsSettings
             var option = DhcpServerOptionValue.GetScopeDefaultOptionValue(server, address, 81);
             if (option.Values.FirstOrDefault() is DhcpServerOptionElementDWord value)
                 return new DhcpServerDnsSettings((uint)value.RawValue);
-            else
-                return GetGlobalDnsSettings(server);
+            return GetGlobalDnsSettings(server);
         }
         catch (DhcpServerException e) when (e.ApiErrorId == (uint)DhcpErrors.ErrorFileNotFound)
         {

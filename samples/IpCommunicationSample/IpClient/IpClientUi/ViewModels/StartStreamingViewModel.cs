@@ -117,7 +117,7 @@ public partial class StartMessagingViewModel : ReactiveObject, IUiRegionViewMode
     {
         return Observable.Start(() =>
         {
-            if (Channel1 == false && Channel2 == false && Channel3 == false && Channel4 == false)
+            if (!Channel1 && !Channel2 && !Channel3 && !Channel4)
             {
                 Channel1 = true;
             }

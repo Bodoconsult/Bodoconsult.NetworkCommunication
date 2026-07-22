@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Runtime.CompilerServices;
 using Bodoconsult.App.Abstractions.Benchmarking;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Runtime.CompilerServices;
-
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 

@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessingPackages;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageProcessors;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.DataMessaging.DataMessagingProcessors;
 

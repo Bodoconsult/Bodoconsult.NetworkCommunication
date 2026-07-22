@@ -6,7 +6,7 @@ namespace Bodoconsult.Network.Windows.Dhcp.Native;
 /// <summary>
 /// The DHCP_SEARCH_INFO_TYPE enumeration defines the set of possible attributes used to search DHCP client information records.
 /// </summary>
-internal enum DhcpSearchInfoType : int
+internal enum DhcpSearchInfoType
 {
     /// <summary>
     /// The search will be performed against the assigned DHCP client IP address, represented as a 32-bit unsigned integer value.

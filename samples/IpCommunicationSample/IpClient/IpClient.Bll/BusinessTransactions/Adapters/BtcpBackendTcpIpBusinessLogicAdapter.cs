@@ -2,11 +2,11 @@
 
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.Replies;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.BusinessLogicAdapters;
 using Bodoconsult.NetworkCommunication.BusinessTransactions.Requests;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
-using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Configurations;
 using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
@@ -17,8 +17,6 @@ using IpClient.Bll.Delegates;
 using IpClient.Bll.Interfaces;
 using IpCommunicationSample.Common.BusinessTransactions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
-using System.Diagnostics;
-using Bodoconsult.App.Helpers;
 using IpCommunicationSample.Common.Extensions;
 
 namespace IpClient.Bll.BusinessTransactions.Adapters;

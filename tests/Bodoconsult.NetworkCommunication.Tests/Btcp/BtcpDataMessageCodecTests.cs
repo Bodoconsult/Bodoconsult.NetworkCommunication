@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using System.Text;
 using Bodoconsult.App.Abstractions.Helpers;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
@@ -8,9 +10,6 @@ using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessageCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Configuration;
-using System.Diagnostics;
-using System.Text;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Btcp;
 
@@ -292,7 +291,7 @@ internal class BtcpDataMessageCodecTests
     public void DecodeDataMessage_ValidInputRealWorld4_MessageDecoded()
     {
         // Arrange 
-        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin"); 
+        var msg = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin"); 
 
         var dataBlockCodingProcessor = new DefaultDataBlockCodingProcessor();
         dataBlockCodingProcessor.LoadDataBlockCodecs('x', new BasicDataBlockCodec());

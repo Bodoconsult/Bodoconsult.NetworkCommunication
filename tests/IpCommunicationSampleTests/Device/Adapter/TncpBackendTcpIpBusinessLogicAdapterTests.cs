@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.BusinessTransactions;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpDevice.Bll.BusinessLogic.Adapters;
-using System.Diagnostics;
 
 namespace IpCommunicationSampleTests.Device.Adapter;
 

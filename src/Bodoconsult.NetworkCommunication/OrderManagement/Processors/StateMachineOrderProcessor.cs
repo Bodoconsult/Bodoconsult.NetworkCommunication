@@ -5,7 +5,6 @@ using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Interfaces;
 
-
 namespace Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 
 /// <summary>

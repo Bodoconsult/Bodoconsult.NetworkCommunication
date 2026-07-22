@@ -15,7 +15,6 @@ using Bodoconsult.NetworkCommunication.Tests.App;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using IpBackend.Bll.Communication;
 
-
 namespace IpCommunicationSampleTests.Backend;
 
 [TestFixture]

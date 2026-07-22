@@ -7,7 +7,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
-
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 
 [TestFixture]

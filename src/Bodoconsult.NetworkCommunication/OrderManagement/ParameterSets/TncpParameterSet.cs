@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
+using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 

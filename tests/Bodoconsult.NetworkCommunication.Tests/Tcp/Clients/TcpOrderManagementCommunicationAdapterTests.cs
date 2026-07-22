@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Factories;
 using Bodoconsult.App.Helpers;
+using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -11,8 +13,6 @@ using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using System.Diagnostics;
-using Bodoconsult.App.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Tcp.Clients;
 

@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Delegates;
-using Bodoconsult.NetworkCommunication.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Delegates;
+using Bodoconsult.NetworkCommunication.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 

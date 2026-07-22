@@ -203,7 +203,7 @@ internal class UdpReceivingTests
 
         var adapter = (TncpIpDeviceTcpIpBusinessLogicAdapter)_backendManager.IpDeviceTcpIp.DeviceBusinessLogicAdapter;
 
-        var request = new StartMessagingBusinessTransactionRequestData()
+        var request = new StartMessagingBusinessTransactionRequestData
         {
             Channel1 = true
         };

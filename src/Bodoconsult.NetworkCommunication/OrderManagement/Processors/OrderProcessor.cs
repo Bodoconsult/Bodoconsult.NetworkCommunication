@@ -118,12 +118,12 @@ public class OrderProcessor : BaseOrderProcessor
             }
         }
 
-        LogInformation($"execution queue cleared for device hardware init");
+        LogInformation("execution queue cleared for device hardware init");
 
         // Is no hardware init required set externally for unit testing
         if (IsNoHardWareInitRequired)
         {
-            LogInformation($"runner restarted");
+            LogInformation("runner restarted");
             IsRunnerStopped = false;
             return null;
         }

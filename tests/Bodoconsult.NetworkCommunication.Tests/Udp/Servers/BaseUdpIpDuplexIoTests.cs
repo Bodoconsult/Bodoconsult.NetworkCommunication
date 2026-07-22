@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
@@ -8,7 +9,6 @@ using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using Bodoconsult.NetworkCommunication.Tests.Infrastructure;
-using System.Diagnostics;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Udp.Servers;
 

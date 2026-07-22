@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using System.Net.Sockets;
 using System.Security;
+using Bodoconsult.App.Helpers;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 

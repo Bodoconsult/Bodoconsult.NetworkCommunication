@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
+using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
-using System.Diagnostics;
 using Bodoconsult.NetworkCommunication.Interfaces;
 using IpDevice.Bll.App;
 using IpDevice.Bll.Interfaces;

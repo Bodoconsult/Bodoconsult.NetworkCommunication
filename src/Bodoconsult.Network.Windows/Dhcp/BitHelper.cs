@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -581,10 +582,8 @@ internal static class BitHelper
                    ((bits << 08) & 0x00FF_0000) |
                    ((bits << 24) & 0xFF00_0000);
         }
-        else
-        {
-            return bits;
-        }
+
+        return bits;
     }
 
     public static int NetworkToHostOrder(int bits) => (int)NetworkToHostOrder((uint)bits);
@@ -603,10 +602,8 @@ internal static class BitHelper
                    ((bits << 40) & 0x00FF000000000000) |
                    ((bits << 56) & 0xFF00000000000000);
         }
-        else
-        {
-            return bits;
-        }
+
+        return bits;
     }
 
     public static long NetworkToHostOrder(long bits) => (long)NetworkToHostOrder((ulong)bits);
@@ -966,6 +963,6 @@ internal static class BitHelper
             builder.AppendLine();
         }
 
-        System.Diagnostics.Debug.WriteLine(builder.ToString());
+        Debug.WriteLine(builder.ToString());
     }
 }

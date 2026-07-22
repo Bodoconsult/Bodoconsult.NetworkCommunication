@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.Delegates;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Buffers;
 
 namespace Bodoconsult.NetworkCommunication.Protocols;
 

@@ -1,13 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using FftSharp;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using FftSharp;
+using ScottPlot;
+using SampleData = FftSharp.SampleData;
 
 namespace IpBackend.Bll.BusinessLogic.Fft
 {
@@ -63,16 +59,16 @@ namespace IpBackend.Bll.BusinessLogic.Fft
         public void SaveAsPng()
         {
             // sample audio with tones at 2, 10, and 20 kHz plus white noise
-            double[] signal = FftSharp.SampleData.SampleAudio1();
+            double[] signal = SampleData.SampleAudio1();
             int sampleRate = 48_000;
 
             // calculate the power spectral density using FFT
-            System.Numerics.Complex[] spectrum = FftSharp.FFT.Forward(signal);
-            double[] psd = FftSharp.FFT.Power(spectrum);
-            double[] freq = FftSharp.FFT.FrequencyScale(psd.Length, sampleRate);
+            Complex[] spectrum = FFT.Forward(signal);
+            double[] psd = FFT.Power(spectrum);
+            double[] freq = FFT.FrequencyScale(psd.Length, sampleRate);
 
             // plot the sample audio
-            ScottPlot.Plot plt = new();
+            Plot plt = new();
             plt.Add.ScatterLine(freq, psd);
             plt.YLabel("Power (dB)");
             plt.XLabel("Frequency (Hz)");

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Abstractions.Helpers;
+using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodecs;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlockCodingProcessors;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataBlocks;
@@ -85,9 +86,12 @@ internal class DefaultDataMessageCodingProcessorTests
 
         var processor = new DefaultDataMessageCodingProcessor(TestDataHelper.Logger);
         processor.MessageCodecs.Add(new BtcpHandshakeMessageCodec());
-        processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor));
+        processor.MessageCodecs.Add(new BtcpDataMessageCodec(dataBlockCodingProcessor)
+        {
+            ExpectedMaximumLength = 400000
+        });
 
-        var msg = ResourceHelper.GetByteResource($"Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin");
+        var msg = ResourceHelper.GetByteResource("Bodoconsult.NetworkCommunication.Tests.Resources.btcp_1.bin");
 
         // Act  
         var result = processor.DecodeDataMessage(msg);
@@ -99,6 +103,21 @@ internal class DefaultDataMessageCodingProcessorTests
             Assert.That(result.DataMessage, Is.Not.Null);
             ArgumentNullException.ThrowIfNull(result.DataMessage);
             Assert.That(result.DataMessage.GetType(), Is.EqualTo(typeof(BtcpRequestInboundDataMessage)));
+
+            if (result.DataMessage is not BtcpRequestInboundDataMessage btcp)
+            {
+                return;
+            }
+
+            if (btcp.DataBlock is not BasicInboundDatablock db)
+            {
+                return;
+            }
+#if DEBUG
+            var path = @"C:\temp\fft.jpg";
+            File.WriteAllBytes(path, db.Data.Span[1..]); // Write all bytes except for the first which is the BT request identifier here
+            FileSystemHelper.RunInDebugMode(path);
+#endif
         }
     }
 

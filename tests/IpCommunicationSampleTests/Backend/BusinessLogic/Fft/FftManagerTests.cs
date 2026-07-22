@@ -1,11 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using IpBackend.Bll.BusinessLogic.Adapters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 using IpBackend.Bll.BusinessLogic.Fft;
 
 namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
@@ -17,7 +12,7 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
         public void Ctor_ValidSetup_PropsSetCorrectly()
         {
             // Arrange 
-            System.Numerics.Complex[] buffer =
+            Complex[] buffer =
             [
                 new(real: 42, imaginary: 12),
                 new(real: 96, imaginary: 34),
@@ -41,7 +36,7 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
         public void CalculatePsd_ValidData_PsdSet()
         {
             // Arrange 
-            System.Numerics.Complex[] buffer =
+            Complex[] buffer =
             [
                 new(real: 42, imaginary: 12),
                 new(real: 96, imaginary: 34),
@@ -67,7 +62,7 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
         public void CalculateFrequencyScale_ValidData_FreqSet()
         {
             // Arrange 
-            System.Numerics.Complex[] buffer =
+            Complex[] buffer =
             [
                 new(real: 42, imaginary: 12),
                 new(real: 96, imaginary: 34),
@@ -107,7 +102,7 @@ namespace IpCommunicationSampleTests.Backend.BusinessLogic.Fft
         public void Test()
         {
             // Arrange 
-            System.Numerics.Complex[] buffer =
+            Complex[] buffer =
             [
                 new(real: 42, imaginary: 12),
                 new(real: 96, imaginary: 34),

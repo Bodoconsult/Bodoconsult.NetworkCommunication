@@ -16,7 +16,7 @@ public partial class FirstView: ReactiveUserControl<FirstViewModel>
         //this.WhenAnyValue(x => x.ViewModel).BindTo(this, x => x.DataContext);
 
 
-        ViewForMixins.WhenActivated((IActivatableView)this, (Action<IDisposable> d) =>
+        this.WhenActivated(d =>
             {
                 d(
                     this.Bind<FirstViewModel, FirstView, string, string>(ViewModel, vm => vm.Test, view => view.PathTextBlock.Text!)

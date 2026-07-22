@@ -101,10 +101,9 @@ public class DhcpServerClient : IDhcpServerClient
         {
             if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
                 return GetClientVq(server, scope, searchInfoPtr);
-            else if (server.IsCompatible(DhcpServerVersions.Windows2000))
+            if (server.IsCompatible(DhcpServerVersions.Windows2000))
                 return GetClientV0(server, scope, searchInfoPtr);
-            else
-                throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
+            throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
         }
     }
 
@@ -158,10 +157,9 @@ public class DhcpServerClient : IDhcpServerClient
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return GetClientsVq(server);
-        else if (server.IsCompatible(DhcpServerVersions.Windows2000))
+        if (server.IsCompatible(DhcpServerVersions.Windows2000))
             return GetClientsV0(server);
-        else
-            throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
+        throw new PlatformNotSupportedException($"DHCP Server v{server.VersionMajor}.{server.VersionMinor} does not support this feature");
     }
 
     private static IEnumerable<DhcpServerClient> GetClientsV0(DhcpServer server)
@@ -278,10 +276,9 @@ public class DhcpServerClient : IDhcpServerClient
     {
         if (scope.Server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return GetScopeClientsVq(scope);
-        else if (scope.Server.IsCompatible(DhcpServerVersions.Windows2000))
+        if (scope.Server.IsCompatible(DhcpServerVersions.Windows2000))
             return GetScopeClientsV0(scope);
-        else
-            throw new PlatformNotSupportedException($"DHCP Server v{scope.Server.VersionMajor}.{scope.Server.VersionMinor} does not support this feature");
+        throw new PlatformNotSupportedException($"DHCP Server v{scope.Server.VersionMajor}.{scope.Server.VersionMinor} does not support this feature");
     }
 
     private static IEnumerable<DhcpServerClient> GetScopeClientsV0(DhcpServerScope scope)
@@ -403,8 +400,7 @@ public class DhcpServerClient : IDhcpServerClient
     {
         if (scope.Server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return CreateClientVq(scope, address, hardwareAddress, name, comment, leaseExpires, ownerHost, clientType, addressState, quarantineStatus, probationEnds, quarantineCapable);
-        else
-            return CreateClientV0(scope, address, hardwareAddress, name, comment, leaseExpires, ownerHost);
+        return CreateClientV0(scope, address, hardwareAddress, name, comment, leaseExpires, ownerHost);
     }
 
     private static DhcpServerClient CreateClientV0(DhcpServerScope scope, DhcpServerIpAddress address, DhcpServerHardwareAddress hardwareAddress, string name, string comment, DateTime leaseExpires, DhcpServerHost ownerHost)

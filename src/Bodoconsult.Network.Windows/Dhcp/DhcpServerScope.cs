@@ -21,7 +21,7 @@ public class DhcpServerScope : IDhcpServerScope
     IDhcpServer IDhcpServerScope.Server => Server;
     public DhcpServerIpAddress Address { get; }
 
-    private SubnetInfo _info = null;
+    private SubnetInfo _info;
     private SubnetInfo Info => _info ??= GetInfo(Server, Address);
     public DhcpServerIpMask Mask => Info.Mask;
     public string Name
@@ -35,7 +35,7 @@ public class DhcpServerScope : IDhcpServerScope
         set => SetComment(value);
     }
     public DhcpServerScopeState State => Info.State;
-    private DhcpServerIpRange? _ipRange = null;
+    private DhcpServerIpRange? _ipRange;
     public DhcpServerIpRange IpRange
     {
         get => (_ipRange ??= GetIpRange());
@@ -54,7 +54,7 @@ public class DhcpServerScope : IDhcpServerScope
     }
 
     public IDhcpServerHost PrimaryHost => Info.PrimaryHost;
-    private DhcpServerDnsSettings _dnsSettings = null;
+    private DhcpServerDnsSettings _dnsSettings;
     public IDhcpServerDnsSettings DnsSettings => _dnsSettings ??= DhcpServerDnsSettings.GetScopeDnsSettings(this);
     public bool QuarantineOn => Info.QuarantineOn;
 
@@ -310,7 +310,7 @@ public class DhcpServerScope : IDhcpServerScope
         {
             var srcOption = srcOptions[optionId];
             var dstOption = destOptions[optionId];
-            if (!Enumerable.SequenceEqual(srcOption.Values, dstOption.Values))
+            if (!srcOption.Values.SequenceEqual(dstOption.Values))
                 destinationScope.Options.AddOrSetOptionValue(srcOption);
         }
 
@@ -358,7 +358,7 @@ public class DhcpServerScope : IDhcpServerScope
             {
                 var srcResOption = srcResOptions[optionId];
                 var destResOption = destResOptions[optionId];
-                if (!Enumerable.SequenceEqual(srcResOption.Values, destResOption.Values))
+                if (!srcResOption.Values.SequenceEqual(destResOption.Values))
                     destRes.Options.AddOrSetOptionValue(srcResOption);
             }
         }
@@ -469,8 +469,7 @@ public class DhcpServerScope : IDhcpServerScope
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008))
             return EnumSubnetElementsV5(server, address, enumElementType);
-        else
-            return EnumSubnetElementsV0(server, address, enumElementType);
+        return EnumSubnetElementsV0(server, address, enumElementType);
     }
 
     private static IEnumerable<DhcpServerIpRange> EnumSubnetElementsV0(DhcpServer server, DhcpServerIpAddress address, DhcpSubnetElementType enumElementType)
@@ -662,7 +661,7 @@ public class DhcpServerScope : IDhcpServerScope
         if (timeDelayOffer.TotalMilliseconds < 0)
             throw new ArgumentOutOfRangeException(nameof(timeDelayOffer), "Time delay offer must be positive");
         if (timeDelayOffer.TotalMilliseconds > 1000)
-            throw new ArgumentOutOfRangeException(nameof(timeDelayOffer), $"Time delay offer must be less than or equal to 1000");
+            throw new ArgumentOutOfRangeException(nameof(timeDelayOffer), "Time delay offer must be less than or equal to 1000");
 
         var timeDelayOfferMilliseconds = (ushort)timeDelayOffer.TotalMilliseconds;
 
@@ -683,8 +682,7 @@ public class DhcpServerScope : IDhcpServerScope
 
             if (optionValue < 0)
                 return null;
-            else
-                return TimeSpan.FromSeconds(optionValue);
+            return TimeSpan.FromSeconds(optionValue);
         }
         catch (DhcpServerException ex) when (ex.ApiErrorId == (uint)DhcpErrors.ErrorFileNotFound)
         {
@@ -709,8 +707,7 @@ public class DhcpServerScope : IDhcpServerScope
     {
         if (server.IsCompatible(DhcpServerVersions.Windows2008R2))
             return GetInfoVq(server, address);
-        else
-            return GetInfoV0(server, address);
+        return GetInfoV0(server, address);
     }
 
     private static SubnetInfo GetInfoV0(DhcpServer server, DhcpServerIpAddress address)

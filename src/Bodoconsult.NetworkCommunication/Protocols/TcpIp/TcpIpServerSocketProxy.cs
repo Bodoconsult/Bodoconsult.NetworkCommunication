@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 // Licence MIT
 
+using System.Net.Sockets;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Net.Sockets;
 
 namespace Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 

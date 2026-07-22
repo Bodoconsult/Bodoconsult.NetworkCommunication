@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Runtime.CompilerServices;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace Bodoconsult.NetworkCommunication.Devices;
 

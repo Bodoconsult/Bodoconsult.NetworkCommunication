@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH.  All rights reserved.
 
-using IpClient.Bll.App;
-using IpClient.Bll.Interfaces;
 using System.Diagnostics;
 using Bodoconsult.App;
 using Bodoconsult.App.Abstractions.Delegates;
@@ -9,6 +7,8 @@ using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Interfaces;
 using Bodoconsult.NetworkCommunication.Interfaces;
+using IpClient.Bll.App;
+using IpClient.Bll.Interfaces;
 
 namespace IpClientUi.AppData;
 

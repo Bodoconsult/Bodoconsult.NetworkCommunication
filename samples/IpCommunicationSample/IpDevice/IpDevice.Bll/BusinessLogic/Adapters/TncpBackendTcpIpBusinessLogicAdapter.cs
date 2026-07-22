@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Text;
 using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
@@ -11,7 +12,6 @@ using Bodoconsult.NetworkCommunication.NetworkCommands;
 using IpCommunicationSample.Common;
 using IpDevice.Bll.BusinessTransactions;
 using IpDevice.Bll.Interfaces;
-using System.Text;
 
 namespace IpDevice.Bll.BusinessLogic.Adapters;
 

@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Net;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Protocols.TcpIp;
 using Bodoconsult.NetworkCommunication.Protocols.Udp;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Net;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Factories;
 

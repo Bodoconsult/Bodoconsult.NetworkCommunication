@@ -87,18 +87,15 @@ public struct DhcpServerPacketOption
         {
             if (index == 0 && length == _dataArray.Length)
                 return _dataArray;
-            else if (length == 0)
+            if (length == 0)
                 return BitHelper.EmptyByteArray;
-            else
-            {
-                var data = new byte[length];
-                Array.Copy(_dataArray, index, data, 0, length);
-                return data;
-            }
+            var data = new byte[length];
+            Array.Copy(_dataArray, index, data, 0, length);
+            return data;
         }
-        else if (length == 0)
+
+        if (length == 0)
             return BitHelper.EmptyByteArray;
-        else
         {
             var data = new byte[length];
             BitHelper.Write(data, 0, _dataLong, index, length);
@@ -137,8 +134,7 @@ public struct DhcpServerPacketOption
 
         if (_dataArray == null)
             return (long)_dataLong; // index must be '0' to reach
-        else
-            return BitHelper.ReadInt64(_dataArray, index);
+        return BitHelper.ReadInt64(_dataArray, index);
     }
 
     public long DataAsInt64()
@@ -156,8 +152,7 @@ public struct DhcpServerPacketOption
 
         if (_dataArray == null)
             return (int)(_dataLong >> (32 - (index * 8)));
-        else
-            return BitHelper.ReadInt32(_dataArray, index);
+        return BitHelper.ReadInt32(_dataArray, index);
     }
 
     public int DataAsInt32()
@@ -175,8 +170,7 @@ public struct DhcpServerPacketOption
 
         if (_dataArray == null)
             return (short)(_dataLong >> (48 - (index * 8)));
-        else
-            return BitHelper.ReadInt16(_dataArray, index);
+        return BitHelper.ReadInt16(_dataArray, index);
     }
 
     public short DataAsInt16()
@@ -194,8 +188,7 @@ public struct DhcpServerPacketOption
 
         if (_dataArray == null)
             return (byte)(_dataLong >> (56 - (index * 8)));
-        else
-            return _dataArray[index];
+        return _dataArray[index];
     }
 
     public byte DataAsByte()
@@ -220,13 +213,9 @@ public struct DhcpServerPacketOption
     {
         if (length == 0)
             return string.Empty;
-        else
-        {
-            if (_dataArray == null)
-                return BitHelper.ReadHexString(_dataLong, index, length);
-            else
-                return BitHelper.ReadHexString(_dataArray, index, length);
-        }
+        if (_dataArray == null)
+            return BitHelper.ReadHexString(_dataLong, index, length);
+        return BitHelper.ReadHexString(_dataArray, index, length);
     }
 
     public string DataAsHexString() => DataAsHexString(0, _length);
@@ -235,13 +224,9 @@ public struct DhcpServerPacketOption
     {
         if (length == 0)
             return string.Empty;
-        else
-        {
-            if (_dataArray == null)
-                return BitHelper.ReadHexString(_dataLong, index, length, seperator);
-            else
-                return BitHelper.ReadHexString(_dataArray, index, length, seperator);
-        }
+        if (_dataArray == null)
+            return BitHelper.ReadHexString(_dataLong, index, length, seperator);
+        return BitHelper.ReadHexString(_dataArray, index, length, seperator);
     }
 
     public string DataAsHexString(char seperator) => DataAsHexString(0, _length, seperator);
@@ -260,10 +245,10 @@ public struct DhcpServerPacketOption
         switch (Type)
         {
             case DhcpServerOptionIdTypes.Pad:
-                builder.Append($"[padding]");
+                builder.Append("[padding]");
                 return;
             case DhcpServerOptionIdTypes.End:
-                builder.Append($"[end]");
+                builder.Append("[end]");
                 return;
             case DhcpServerOptionIdTypes.IpAddress:
                 if (_length == 4)
@@ -400,7 +385,7 @@ public struct DhcpServerPacketOption
             case DhcpServerOptionIdTypes.ZeroLengthFlag:
                 if (_length == 0)
                 {
-                    builder.Append($"[present]");
+                    builder.Append("[present]");
                     return;
                 }
                 break;
@@ -474,7 +459,8 @@ public struct DhcpServerPacketOption
                         builder.AppendDnsLabelsStrings(DataAsBytes(1, _length - 1), 0, _length - 1, "; ");
                         return;
                     }
-                    else if (encoding == 1 && (_length - 1) % 4 == 0)
+
+                    if (encoding == 1 && (_length - 1) % 4 == 0)
                     {
                         for (var i = 1; i < _length; i += 4)
                         {
@@ -529,28 +515,28 @@ public struct DhcpServerPacketOption
                         switch (state)
                         {
                             case 1:
-                                builder.Append($"Available [1]");
+                                builder.Append("Available [1]");
                                 break;
                             case 2:
-                                builder.Append($"Active [2]");
+                                builder.Append("Active [2]");
                                 break;
                             case 3:
-                                builder.Append($"Expired [3]");
+                                builder.Append("Expired [3]");
                                 break;
                             case 4:
-                                builder.Append($"Released [4]");
+                                builder.Append("Released [4]");
                                 break;
                             case 5:
-                                builder.Append($"Abandoned [5]");
+                                builder.Append("Abandoned [5]");
                                 break;
                             case 6:
-                                builder.Append($"Reset [6]");
+                                builder.Append("Reset [6]");
                                 break;
                             case 7:
-                                builder.Append($"Remote [7]");
+                                builder.Append("Remote [7]");
                                 break;
                             case 8:
-                                builder.Append($"Transitioning [8]");
+                                builder.Append("Transitioning [8]");
                                 break;
                         }
                         return;
@@ -599,13 +585,11 @@ public struct DhcpServerPacketOption
                     index += dataLength;
                     return new DhcpServerPacketOption(id, bufferL, dataLength);
                 }
-                else
-                {
-                    var bufferA = new byte[dataLength];
-                    Array.Copy(buffer, index, bufferA, 0, Math.Min(dataLength, buffer.Length - index));
-                    index += dataLength;
-                    return new DhcpServerPacketOption(id, bufferA);
-                }
+
+                var bufferA = new byte[dataLength];
+                Array.Copy(buffer, index, bufferA, 0, Math.Min(dataLength, buffer.Length - index));
+                index += dataLength;
+                return new DhcpServerPacketOption(id, bufferA);
         }
     }
 

@@ -1,9 +1,12 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using Bodoconsult.App.Abstractions.Interfaces;
 using Bodoconsult.App.Helpers;
 using Bodoconsult.NetworkCommunication.ClientNotifications;
 using Bodoconsult.NetworkCommunication.Communication;
 using Bodoconsult.NetworkCommunication.DataMessaging.DataMessages;
+using Bodoconsult.NetworkCommunication.Devices;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
 using Bodoconsult.NetworkCommunication.Factories;
 using Bodoconsult.NetworkCommunication.Interfaces;
@@ -12,10 +15,6 @@ using Bodoconsult.NetworkCommunication.OrderManagement.OrderBuilders;
 using Bodoconsult.NetworkCommunication.OrderManagement.ParameterSets;
 using Bodoconsult.NetworkCommunication.OrderManagement.Processors;
 using Bodoconsult.NetworkCommunication.Tests.Helpers;
-using System.Diagnostics;
-using Bodoconsult.App.Abstractions.Interfaces;
-
-using Bodoconsult.NetworkCommunication.Devices;
 
 namespace Bodoconsult.NetworkCommunication.Tests.OrderManagement.Processors;
 
@@ -107,7 +106,7 @@ internal class OrderProcessorTests
 
         AsyncHelper.Delay(25);
 
-        Debug.Print($"TOPTests: Receiving message started");
+        Debug.Print("TOPTests: Receiving message started");
         _processor.CheckReceivedMessage(msg);
 
         return false;

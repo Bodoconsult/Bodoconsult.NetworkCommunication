@@ -1,5 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Diagnostics;
+using System.Net;
+using System.Text;
 using Bodoconsult.App;
 using Bodoconsult.App.BusinessTransactions.RequestData;
 using Bodoconsult.App.Helpers;
@@ -10,9 +13,6 @@ using DynamicData;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpDevice.Bll.Interfaces;
 using IpDeviceService.DiContainerProvider;
-using System.Diagnostics;
-using System.Net;
-using System.Text;
 
 namespace IpCommunicationSampleTests.Device.RealWorld;
 

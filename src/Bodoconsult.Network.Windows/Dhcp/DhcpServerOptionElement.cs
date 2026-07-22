@@ -346,7 +346,7 @@ public class DhcpServerOptionElementBinary : DhcpServerOptionElement
             if (RawValue.Length == 0 && oe.RawValue.Length == 0)
                 return true;
 
-            return Enumerable.SequenceEqual(RawValue, oe.RawValue);
+            return RawValue.SequenceEqual(oe.RawValue);
         }
 
         return false;

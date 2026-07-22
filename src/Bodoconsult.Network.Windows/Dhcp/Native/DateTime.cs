@@ -19,29 +19,27 @@ internal readonly struct DateTime
         DwDateTime = fileTimeUtc;
     }
 
-    private global::System.DateTime ToDateTime()
+    private System.DateTime ToDateTime()
     {
         if (DwDateTime == 0)
-            return global::System.DateTime.SpecifyKind(global::System.DateTime.MinValue, DateTimeKind.Utc);
-        else if (DwDateTime == long.MaxValue)
-            return global::System.DateTime.SpecifyKind(global::System.DateTime.MaxValue, DateTimeKind.Utc);
-        else
-            return global::System.DateTime.FromFileTimeUtc(DwDateTime);
+            return System.DateTime.SpecifyKind(System.DateTime.MinValue, DateTimeKind.Utc);
+        if (DwDateTime == long.MaxValue)
+            return System.DateTime.SpecifyKind(System.DateTime.MaxValue, DateTimeKind.Utc);
+        return System.DateTime.FromFileTimeUtc(DwDateTime);
     }
 
-    public static DateTime FromDateTime(global::System.DateTime dateTime)
+    public static DateTime FromDateTime(System.DateTime dateTime)
     {
-        if (dateTime == global::System.DateTime.MinValue)
+        if (dateTime == System.DateTime.MinValue)
             return new DateTime(0);
-        else if (dateTime == global::System.DateTime.MaxValue)
+        if (dateTime == System.DateTime.MaxValue)
             return new DateTime(long.MaxValue);
-        else
-            return new DateTime(dateTime.ToFileTimeUtc());
+        return new DateTime(dateTime.ToFileTimeUtc());
     }
 
-    public static implicit operator global::System.DateTime(DateTime dateTime)
+    public static implicit operator System.DateTime(DateTime dateTime)
         => dateTime.ToDateTime();
 
-    public static implicit operator DateTime(global::System.DateTime dateTime)
+    public static implicit operator DateTime(System.DateTime dateTime)
         => FromDateTime(dateTime);
 }

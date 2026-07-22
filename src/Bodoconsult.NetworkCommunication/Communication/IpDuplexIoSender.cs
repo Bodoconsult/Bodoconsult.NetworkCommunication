@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
 using Bodoconsult.App.Helpers;
-using Bodoconsult.NetworkCommunication.Interfaces;
 using Bodoconsult.NetworkCommunication.EnumAndStates;
+using Bodoconsult.NetworkCommunication.Interfaces;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 

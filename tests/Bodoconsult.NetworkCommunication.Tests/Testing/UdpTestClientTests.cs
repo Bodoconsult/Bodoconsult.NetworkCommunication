@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
-using Bodoconsult.NetworkCommunication.Testing;
-using Bodoconsult.NetworkCommunication.Tests.Helpers;
 using System.Diagnostics;
 using System.Net;
+using Bodoconsult.NetworkCommunication.Testing;
+using Bodoconsult.NetworkCommunication.Tests.Helpers;
 
 namespace Bodoconsult.NetworkCommunication.Tests.Testing;
 

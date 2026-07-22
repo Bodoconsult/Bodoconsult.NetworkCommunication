@@ -10,8 +10,8 @@ using Bodoconsult.App.ReactiveUI.Interfaces;
 using Bodoconsult.App.ReactiveUI.Menus;
 using Bodoconsult.App.ReactiveUI.Ui;
 using Bodoconsult.App.ReactiveUI.ViewModels;
-using IpClient.Bll.Interfaces;
 using IpClient.Bll.App;
+using IpClient.Bll.Interfaces;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 

@@ -2,6 +2,7 @@
 
 
 using System.Collections;
+using Bodoconsult.Network.Windows.Dhcp.Native;
 
 namespace Bodoconsult.Network.Windows.Dhcp;
 
@@ -22,7 +23,7 @@ public class DhcpServerScopeExcludedIpRangeCollection : IDhcpServerScopeExcluded
     /// Enumerates a list of excluded IP ranges associated with the DHCP Scope
     /// </summary>
     public IEnumerator<DhcpServerIpRange> GetEnumerator()
-        => DhcpServerScope.EnumSubnetElements(Server, Scope.Address, Native.DhcpSubnetElementType.DhcpExcludedIpRanges).GetEnumerator();
+        => DhcpServerScope.EnumSubnetElements(Server, Scope.Address, DhcpSubnetElementType.DhcpExcludedIpRanges).GetEnumerator();
 
     /// <summary>
     /// Enumerates a list of excluded IP ranges associated with the DHCP Scope

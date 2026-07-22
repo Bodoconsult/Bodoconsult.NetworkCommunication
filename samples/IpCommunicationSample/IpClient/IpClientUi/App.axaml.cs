@@ -12,7 +12,7 @@ namespace IpClientUi;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public class App : Application
 {
     public IRxMainWindowViewModel? MainWindowViewModel { get; set; }
 

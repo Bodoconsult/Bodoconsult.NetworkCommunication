@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using Bodoconsult.App.Abstractions.Extensions;
 using IpCommunicationSample.Common.BusinessTransactions.Requests;
 using IpCommunicationSample.Common.Extensions;
-using Bodoconsult.App.Abstractions.Extensions;
 
 namespace IpCommunicationSampleTests.Extensions;
 

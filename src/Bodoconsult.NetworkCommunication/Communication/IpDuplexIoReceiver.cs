@@ -1,9 +1,8 @@
 ﻿// Copyright (c) Bodoconsult EDV-Dienstleistungen GmbH. All rights reserved.
 
+using System.Buffers;
 using Bodoconsult.NetworkCommunication.Helpers;
 using Bodoconsult.NetworkCommunication.Interfaces;
-using Microsoft.Diagnostics.Utilities;
-using System.Buffers;
 
 namespace Bodoconsult.NetworkCommunication.Communication;
 
